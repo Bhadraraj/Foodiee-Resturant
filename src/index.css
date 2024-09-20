@@ -1,0 +1,225 @@
+/* Barlow GOOGLE FONT */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Barlow GOOGLE FONT */
+
+:root {
+  --primary-clr: #EE791C;
+  --secondary-clr: #0C2640;
+  --light-grey: #8596A6;
+
+
+
+  --heading-color: #233876;
+  --card-bg: #F5FAF7;
+  --input-bg: #F2F0F9;
+  --button-bg: #2C2A38;
+  --light-white: #FDFCFD;
+  --black-clr: #000208;
+  --faded-color: #F6F6F6;
+  --grey-color: #6B7280;
+
+}
+
+
+
+/* LOGIN SECTION STYLES STARTS HERE  */
+.loginSection {
+  padding: 150px 10px;
+
+}
+
+.loginSection h1 {
+  font-size: 46px;
+  color: var(--secondary-clr);
+
+  font-family: "Barlow", system-ui;
+  font-weight: 700;
+
+}
+
+.loginSecImg {
+
+
+  animation: loginImageAnimation;
+
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+
+  animation-direction: alternate;
+}
+
+
+@keyframes loginImageAnimation {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-20px);
+  }
+
+
+}
+
+
+
+
+
+
+
+/* CONTACT SUPPORT STARTS HERE  */
+
+.form-control {
+
+  border-radius: 0px 8px 8px 0px !important;
+
+  background-color: white;
+
+}
+
+.input-group-text {
+  /* border-radius: 20px 0px 0px 20px !important; */
+  background-color: white !important;
+  border: none !important;
+  color: var(--primary-clr) !important;
+
+}
+
+.input-group {
+  border: none;
+  border: 1px solid var(--primary-clr);
+  border-radius: 8px;
+  outline: none;
+  width: 380px !important;
+}
+
+
+.loginSection svg {
+  font-size: 15px;
+  margin-right: 10px;
+  color: var(--primary-clr);
+
+}
+
+.loginSection input {}
+
+.form-control {
+  font-size: 10px;
+  border: none !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.issuesSec {
+  display: flex;
+  padding-top: 17px !important;
+  align-items: flex-start !important;
+
+}
+
+.loginBtn {
+  background-color: var(--primary-clr);
+  color: var(--light-white);
+
+  border: none;
+  padding: 10px 40px;
+  border-radius: 8px;
+  font-weight: 700;
+  width: 380px !important;
+}
+
+small {
+  font-size: 12px;
+}
+
+.forgotPwd {
+  color: var(--primary-clr);
+  font-weight: 500;
+
+}
+
+
+/* LOGIN SECTION STYLES ENDS HERE  */
+
+
+
+/* LOGIN LOGOUT POP UP MESSAGE */
+
+.ant-notification {
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(-20px);
+  /* Adjust the value to control how far it moves */
+}
+
+.ant-notification {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.ant-notification-notice {
+  opacity: 1; /* Start fully visible */
+}
+
+.ant-notification-notice-leaving {
+  opacity: 0; /* Fade out */
+}
+
+
+
+/* LOGIN LOGOUT POP UP MESSAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MENU SECTION SETCION STARTS HERE */
+
+
+.menuSection{
+  padding: 100px 0px ;
+}
+.menuCardOuter{
+  border: 1px solid var(--primary-clr);
+  padding: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
+
+.menuItemName{
+  color: var(--secondary-clr);
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
+.menuItemPrice, .menuItemRatings{
+  color: var(--primary-clr);
+  font-weight: 700;
+}
+.menuItemRatings svg{
+  margin-right: 5px;
+}
+
+
+.addMenuItems{
+  background-color: var(--primary-clr);
+  color: var(--light-white);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+}
+/* MENU SECTION SETCION ENDS HERE */
