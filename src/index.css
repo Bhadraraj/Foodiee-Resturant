@@ -193,8 +193,8 @@ small {
 /* MENU SECTION SETCION STARTS HERE */
 
 
-.menuSection {
-  padding: 100px 0px;
+.cartSectionRight {
+  padding: 30px;
 }
 
 .menuCardOuter {
@@ -247,4 +247,79 @@ small {
 
 }
 
-/* MENU SECTION SETCION ENDS HERE */
+/* MENU SETCION ENDS HERE */
+
+
+
+/* ADD TO CART STARTS HERE */
+.cartSectionRight {
+  width: 300px;
+  background-color: var(--card-bg);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  /* Initially hide the cart off-screen to the right */
+  transition: right 0.8s ease;
+}
+
+.cartSectionRight.show {
+  right: 0;
+}
+
+.cartSectionRight.hide {
+  right: -300px;
+
+}
+
+.cartSectionRight h3 {
+  /* color: ; */ 
+  color: var(--secondary-clr);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: var(--card-bg);
+}
+
+
+.logoSec a {
+  color: var(--heading-color);
+  text-decoration: none;
+}
+
+.navBartoggleBtn {
+  font-size: 24px;
+  color: var(--primary-clr);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navBartoggleBtn i {
+  pointer-events: none;
+}
+
+.cartSectionRight {
+  font-weight: bold;
+}
+
+.navBar input {
+  width: 500px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background-color: #eeeeee;
+  padding: 4px 20px;
+}
+
+
+.toggleNavIcon {
+  color: var(--primary-clr)
+}
+
+/* ADD TO CART ENDS HERE */

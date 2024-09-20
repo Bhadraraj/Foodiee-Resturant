@@ -1,29 +1,33 @@
-// import { notification } from 'antd';
+import React, { useState } from "react";
 
-// const openNotification = () => {
-//     notification.open({
-//         message: 'Notification Title',
-//         description: 'This is the content of the notification.',
-//         placement: 'top',
-//     });
-// };
-// import { message } from 'antd';
+const Demo = () => {
+  const [showCart, setShowCart] = useState(false);
 
-// const showMessage = () => {
-//     message.success('This is a success message!');
-// };
+  const toggleCart = () => {
+    setShowCart(!showCart); // Toggle cart visibility
+  };
 
+  return (
+    <div>
+      {/* Menu Section */}
+      <div className="menu">
+        {/* Button to open the cart */}
+        <button onClick={toggleCart} className="toggle-btn">
+          O
+        </button>
+      </div>
 
-// import { Modal } from 'antd';
+      {/* Cart Section */}
+      <div className={`cart-section ${showCart ? 'show' : 'hide'}`}>
+        {/* Button to close the cart */}
+        <button onClick={toggleCart} className="toggle-btn">
+          P
+        </button>
+        <h2>Shopping Cart</h2>
+        {/* Cart details go here */}
+      </div>
+    </div>
+  );
+};
 
-// const showModal = () => {
-//     Modal.info({
-//         title: 'Modal Title',
-//         content: (
-//             <div>
-//                 <p>Some contents...</p>
-//             </div>
-//         ),
-//         onOk() {},
-//     });
-// };
+export default Demo;
