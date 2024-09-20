@@ -24,6 +24,10 @@
 }
 
 
+* {
+  font-family: "Barlow", system-ui;
+}
+
 
 /* LOGIN SECTION STYLES STARTS HERE  */
 .loginSection {
@@ -161,11 +165,13 @@ small {
 }
 
 .ant-notification-notice {
-  opacity: 1; /* Start fully visible */
+  opacity: 1;
+  /* Start fully visible */
 }
 
 .ant-notification-notice-leaving {
-  opacity: 0; /* Fade out */
+  opacity: 0;
+  /* Fade out */
 }
 
 
@@ -187,34 +193,39 @@ small {
 /* MENU SECTION SETCION STARTS HERE */
 
 
-.menuSection{
-  padding: 100px 0px ;
+.menuSection {
+  padding: 100px 0px;
 }
-.menuCardOuter{
+
+.menuCardOuter {
   border: 1px solid var(--primary-clr);
-  padding: 10px;
+  padding: 18px;
   width: fit-content;
   height: fit-content;
+  border-radius: 10px;
+  box-shadow: 0.1px 0.1px 4px var(--primary-clr);
 }
 
 
-.menuItemName{
+.menuItemName {
   color: var(--secondary-clr);
   font-size: 20px;
   font-weight: 700;
 
 }
 
-.menuItemPrice, .menuItemRatings{
+.menuItemPrice,
+.menuItemRatings {
   color: var(--primary-clr);
   font-weight: 700;
 }
-.menuItemRatings svg{
+
+.menuItemRatings svg {
   margin-right: 5px;
 }
 
 
-.addMenuItems{
+.addMenuItems {
   background-color: var(--primary-clr);
   color: var(--light-white);
   padding: 5px 10px;
@@ -222,4 +233,18 @@ small {
   border-radius: 10px;
   font-weight: 600;
 }
+
+
+.menuSection h2 {
+  color: var(--secondary-clr);
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.menuSection .secBtmCnt {
+  color: var(--grey-color);
+
+
+}
+
 /* MENU SECTION SETCION ENDS HERE */
