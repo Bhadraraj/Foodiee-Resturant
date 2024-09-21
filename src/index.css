@@ -26,11 +26,18 @@
 
 * {
   font-family: "Barlow", system-ui;
+
+
 }
 
 
 /* LOGIN SECTION STYLES STARTS HERE  */
 .loginSection {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 150px 10px;
 
 }
@@ -184,6 +191,53 @@ small {
 
 
 
+.headerSection {
+  padding: 10px 0;
+  /* Adjust as needed */
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  /* Ensure vertical alignment */
+  justify-content: space-between;
+  /* Space between items */
+}
+
+.logoSec h3 {
+  margin: 0;
+  /* Remove default margin */
+}
+
+.mainSearch {
+  height: 38px;
+  /* Adjust height for better alignment */
+  padding: 5px;
+  /* Adjust padding for aesthetics */
+}
+
+.notificationIconTop {
+  display: flex;
+  align-items: center;
+  /* Align notification icon vertically */
+}
+
+.notificationIconTop svg {
+  font-size: 28px;
+  color: var(--primary-clr);
+}
+
+.toggleNavIcon {
+  display: flex;
+  align-items: center;
+  /* Align toggle button vertically */
+}
+
+.logoutComp {
+  display: flex;
+  align-items: center;
+  /* Align logout button vertically */
+}
 
 
 
@@ -191,10 +245,31 @@ small {
 
 
 /* MENU SECTION SETCION STARTS HERE */
-
-
 .cartSectionRight {
   padding: 30px;
+  width: 300px;
+  background-color: var(--card-bg);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  /* Initially hide the cart off-screen */
+  transition: right 0.8s ease;
+  font-weight: bold;
+}
+
+.cartSectionRight.show {
+  right: 0;
+}
+
+.cartSectionRight.hide {
+  right: -300px;
+}
+
+.cartSectionRight h3 {
+  color: var(--secondary-clr);
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .menuCardOuter {
@@ -206,12 +281,10 @@ small {
   box-shadow: 0.1px 0.1px 4px var(--primary-clr);
 }
 
-
 .menuItemName {
   color: var(--secondary-clr);
   font-size: 20px;
   font-weight: 700;
-
 }
 
 .menuItemPrice,
@@ -224,7 +297,6 @@ small {
   margin-right: 5px;
 }
 
-
 .addMenuItems {
   background-color: var(--primary-clr);
   color: var(--light-white);
@@ -234,7 +306,6 @@ small {
   font-weight: 600;
 }
 
-
 .menuSection h2 {
   color: var(--secondary-clr);
   font-size: 48px;
@@ -243,40 +314,19 @@ small {
 
 .menuSection .secBtmCnt {
   color: var(--grey-color);
-
-
 }
 
-/* MENU SETCION ENDS HERE */
+/* NAVBAR STYLES */
 
 
 
-/* ADD TO CART STARTS HERE */
-.cartSectionRight {
-  width: 300px;
-  background-color: var(--card-bg);
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  right: -300px;
-  /* Initially hide the cart off-screen to the right */
-  transition: right 0.8s ease;
+.headerSection input {
+  background: none;
 }
 
-.cartSectionRight.show {
-  right: 0;
-}
+.headerSection .input-group-text {
+  background: none !important;
 
-.cartSectionRight.hide {
-  right: -300px;
-
-}
-
-.cartSectionRight h3 {
-  /* color: ; */ 
-  color: var(--secondary-clr);
-  font-size: 20px;
-  font-weight: 600;
 }
 
 .navBar {
@@ -286,40 +336,57 @@ small {
   background-color: var(--card-bg);
 }
 
+.headerSection {
+  background-color: var(--card-bg);
+}
 
 .logoSec a {
   color: var(--heading-color);
   text-decoration: none;
 }
 
+/* .searchBar {
+  height: fit-content;
+} */
+
 .navBartoggleBtn {
+
   font-size: 24px;
   color: var(--primary-clr);
   background: none;
   border: none;
+  padding: 0px;
+  margin: 0px;
   cursor: pointer;
 }
 
-.navBartoggleBtn i {
-  pointer-events: none;
+/* .input-group {
+  flex-grow: 1; /* Allows the search bar to take available space */
+
+/* } */
+*/ .notificationIconTop,
+.toggleNavIcon,
+.logoutComp {
+  display: flex;
+  /* This makes sure icons align well */
+  align-items: center;
+  /* Center align vertically */
 }
 
-.cartSectionRight {
-  font-weight: bold;
-}
+
 
 .navBar input {
   width: 500px;
   border-radius: 10px;
   border: none;
   outline: none;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
   padding: 4px 20px;
 }
 
-
 .toggleNavIcon {
-  color: var(--primary-clr)
+  font-size: 30px;
+  color: var(--primary-clr);
 }
 
 /* ADD TO CART ENDS HERE */

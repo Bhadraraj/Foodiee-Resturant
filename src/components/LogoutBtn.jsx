@@ -1,7 +1,9 @@
 import React from 'react';
-import { useAuth } from './Auth/AuthContext'; // Adjust the path as necessary
+import { useAuth } from './Auth/AuthContext'
 import { useNavigate } from 'react-router-dom';
 import { notification } from 'antd';
+
+import { IoMdLogOut } from "react-icons/io";
 
 const LogoutBtn = () => {
     const { logout } = useAuth();
@@ -9,18 +11,18 @@ const LogoutBtn = () => {
 
     const handleLogout = async () => {
         try {
-            await logout(); // Ensure the logout function returns a promise if it involves async operations
+            await logout(); 
             notification.success({
                 message: 'Logout Successful',
                 description: 'You have been logged out.',
                 placement: 'top',
-                duration: 0.5, // Notification will hide after 0.5 seconds
+                duration: 0.5,
                 style: {
                     transition: 'transform 0.5s ease-in-out',
                     transform: 'translateY(0)',
                 },
                 onClose: () => {
-                    navigate('/login'); // Redirect to login page after the notification disappears
+                    navigate('/login');
                 },
             });
         } catch (error) {
@@ -28,7 +30,7 @@ const LogoutBtn = () => {
                 message: 'Logout Failed',
                 description: 'There was an issue logging you out. Please try again.',
                 placement: 'top',
-                duration: 0.5, // Notification will hide after 0.5 seconds
+                duration: 0.5, 
                 style: {
                     transition: 'transform 0.5s ease-in-out',
                     transform: 'translateY(0)',
@@ -38,8 +40,8 @@ const LogoutBtn = () => {
     };
 
     return (
-        <button onClick={handleLogout} className="btn btn-danger">
-            Logout
+        <button onClick={handleLogout} className="btn btn-">
+            <IoMdLogOut />   Logout
         </button>
     );
 };

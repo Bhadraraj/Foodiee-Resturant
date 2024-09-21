@@ -1,47 +1,40 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Home from './components/Home';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
-import ProtectedRoute from './components/Auth/ProtectedRoute';
-import { AuthProvider } from './components/Auth/AuthContext';
+
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import Home from './components/Home';
 import MenuPage from './components/MenuPage';
-import Nav from './components/Nav';
+import NavBarTop from './components/NavBarTop';
+import NavBarLeft from './components/NavBarLeft';
 import Login from './components/Login';
-import { IoMoon } from 'react-icons/io5';
-import Demo from './components/Demo'
+import Demo from './components/Demo';
+import { AuthProvider, useAuth } from './components/Auth/AuthContext';
+
+function ProtectedRoute({ children }) {
+  const { isAuthenticated } = useAuth();
+
+  // If user is not authenticated, redirect to login page
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return children;
+}
 
 function App() {
+  const location = useLocation();
+  const shouldShowNav = location.pathname !== '/login';
+
   return (
     <AuthProvider>
+      {shouldShowNav && <NavBarTop /> && <NavBarLeft />}
       <Routes>
-
-        {/* <Route path="/Demo" element={<Demo />} /> */}
-
-        {/* <Demo/> */}
-
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/Demo" element={<Demo />} />
-        <Route path="/Nav" element={<Nav />} />
-        {/* <Route
-          path="/menu"
-          element={
-            <ProtectedRoute>
-              <MenuPage />
-            </ProtectedRoute>
-          }
-        /> */}
-        <Route
-          path="/Demo"
-          element={
-            <ProtectedRoute>
-              <Demo />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
+        <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </AuthProvider>
   );
