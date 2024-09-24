@@ -1,71 +1,96 @@
-import React, { useState } from "react";
-import { MdNotificationsActive } from "react-icons/md";
-import { RiMenu3Line } from "react-icons/ri";
+import React from 'react';
+import './demo.css'; // Custom styles
 
-import { FiSearch } from "react-icons/fi";
-
-
-
-
-import { IoCloseOutline } from "react-icons/io5";
-import LogoutBtn from './LogoutBtn';
+const orders = [
+  {
+    customer: 'Eren Jaegar',
+    menu: 'Spicy seasoned seafood noodles',
+    payment: '$125',
+    status: 'Completed',
+    avatarColor: '#FFD700', // Gold for avatar
+  },
+  {
+    customer: 'Reiner Braunn',
+    menu: 'Salted Pasta with mushroom sauce',
+    payment: '$145',
+    status: 'Preparing',
+    avatarColor: '#87CEEB', // Blue for avatar
+  },
+  {
+    customer: 'Levi Ackerman',
+    menu: 'Beef dumpling in hot and sour soup',
+    payment: '$105',
+    status: 'Pending',
+    avatarColor: '#FF69B4', // Pink for avatar
+  },
+  {
+    customer: 'Historia Reiss',
+    menu: 'Hot spicy fried rice with omelet',
+    payment: '$45',
+    status: 'Completed',
+    avatarColor: '#00FA9A', // Green for avatar
+  },
+  {
+    customer: 'Hanji Zoe',
+    menu: 'Hot spicy fried rice with omelet',
+    payment: '$245',
+    status: 'Completed',
+    avatarColor: '#8A2BE2', // Purple for avatar
+  },
+];
 
 const Demo = () => {
-  const [showCart, setShowCart] = useState(false);
-
-  const toggleCart = () => {
-      setShowCart(!showCart); // Toggle cart visibility
-  };
-
   return (
-    <>
-
-
-      <header className="headerSection">
-        <div className="container">
-          <div className="navBar d-flex align-items-center justify-content-between">
-
-
-
-            <div className="logo">
-              <h1>Logo</h1>
-            </div>
-
-
-            <div className="input-group ">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Recipient's username"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-              />
-              <span className="input-group-text" >
-
-                <FiSearch />
-              </span>
-            </div>
-
-            <div className="notificationIconTop me-3">
-              <MdNotificationsActive />
-            {/* </div>
-            <div className="toggleNavIcon"> */}
-              <span onClick={toggleCart} className="navBartoggleBtn ms-4">
-                <RiMenu3Line />
-              </span>
-            </div>
-
-
-
-
-
-
-
-          </div>
-        </div>
-      </header>
-
-    </>
+    <div className="container order-report">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>Order Report</h2>
+        <button className="btn btn-outline-secondary d-flex align-items-center">
+          <i className="bi bi-filter" /> Filter Order
+        </button>
+      </div>
+      <table className="table table-borderless align-middle">
+        <thead className="table-light">
+          <tr>
+            <th>Customer</th>
+            <th>Menu</th>
+            <th>Total Payment</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((order, index) => (
+            <tr key={index}>
+              <td>
+                <div className="d-flex align-items-center">
+                  <div
+                    className="avatar me-3"
+                    style={{ backgroundColor: order.avatarColor }}
+                  >
+                    {order.customer.charAt(0)}
+                  </div>
+                  {order.customer}
+                </div>
+              </td>
+              <td>{order.menu}</td>
+              <td>{order.payment}</td>
+              <td>
+                <span
+                  className={`status-badge ${
+                    order.status.toLowerCase() === 'completed'
+                      ? 'completed'
+                      : order.status.toLowerCase() === 'preparing'
+                      ? 'preparing'
+                      : 'pending'
+                  }`}
+                >
+                  {order.status}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

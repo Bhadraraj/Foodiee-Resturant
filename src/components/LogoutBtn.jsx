@@ -41,7 +41,7 @@ const LogoutBtn = () => {
 
     return (
         <button onClick={handleLogout} className="btn btn-">
-            <IoMdLogOut />   Logout
+            <IoMdLogOut /> 
         </button>
     );
 };

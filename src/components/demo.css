@@ -1,0 +1,53 @@
+body {
+    background-color: #f8f9fa; /* Light background */
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.order-report {
+    margin: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+}
+
+.avatar img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status-badge.completed {
+    background-color: #00b894;
+}
+
+.status-badge.preparing {
+    background-color: #a29bfe;
+}
+
+.status-badge.pending {
+    background-color: #fdcb6e;
+}
+
+table th, table td {
+    vertical-align: middle;
+}

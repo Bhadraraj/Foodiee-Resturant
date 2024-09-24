@@ -9,6 +9,9 @@ import NavBarTop from './components/NavBarTop';
 import NavBarLeft from './components/NavBarLeft';
 import Login from './components/Login';
 import Demo from './components/Demo';
+import Dashboard from './components/Dashboard';
+import Notification from './components/Notification';
+import CustomerList from './components/CustomerList';
 import { AuthProvider, useAuth } from './components/Auth/AuthContext';
 
 function ProtectedRoute({ children }) {
@@ -31,18 +34,33 @@ function App() {
       {shouldShowNav && (
         <>
           <NavBarTop />
-          {/* <NavBarLeft /> */}
+          <div className="container">
+            <div className="row d-flex">
+              <div className="col-2 p-0">
+                <NavBarLeft />
+              </div>
+              <div className="col-10 p-4">
+                <Routes>
+                  <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                  <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
+                  <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
+                  <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                  <Route path="/customerList" element={<ProtectedRoute><CustomerList /></ProtectedRoute>} />
+                  <Route path="/notification" element={<ProtectedRoute><Notification /></ProtectedRoute>} />
+                  <Route path="*" element={<Navigate to="/login" />} />
+                </Routes>
+              </div>
+            </div>
+          </div>
         </>
       )}
+
+      {/* Routes outside the flex layout */}
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-        <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
-        <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<Login />} /> {/* Make sure the login page is here */}
       </Routes>
     </AuthProvider>
   );
-}
+};
 
 export default App;
