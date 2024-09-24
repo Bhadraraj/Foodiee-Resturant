@@ -28,7 +28,12 @@ function App() {
 
   return (
     <AuthProvider>
-      {shouldShowNav && <NavBarTop /> && <NavBarLeft />}
+      {shouldShowNav && (
+        <>
+          <NavBarTop />
+          {/* <NavBarLeft /> */}
+        </>
+      )}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />

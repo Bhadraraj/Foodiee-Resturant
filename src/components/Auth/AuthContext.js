@@ -1,21 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Create the context
 const AuthContext = createContext();
 
-// Provider component
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     const storedAuth = localStorage.getItem('auth');
     const storedLoginTime = localStorage.getItem('loginTime');
 
     if (storedAuth && storedLoginTime) {
-      const timeElapsed = Date.now() - parseInt(storedLoginTime, 10); // Time in milliseconds
+      const timeElapsed = Date.now() - parseInt(storedLoginTime, 10);
       if (timeElapsed < 3600000) {
-        return true; // Less than 1 hour has passed
+        return true;
       }
     }
-    return false; // Not authenticated
+    return false;
   });
 
   const [authTimer, setAuthTimer] = useState(null);
@@ -24,12 +22,11 @@ export const AuthProvider = ({ children }) => {
     setIsAuthenticated(true);
     const currentTime = Date.now();
     localStorage.setItem('auth', true);
-    localStorage.setItem('loginTime', currentTime); // Store current timestamp
+    localStorage.setItem('loginTime', currentTime);
 
-    // Set a timeout for 1 hour
     const timer = setTimeout(() => {
       logout();
-    }, 3600000); // 1 hour (3600000 milliseconds)
+    }, 3600000);
     setAuthTimer(timer);
   };
 

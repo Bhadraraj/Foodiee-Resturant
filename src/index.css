@@ -9,7 +9,7 @@
   --primary-clr: #EE791C;
   --secondary-clr: #0C2640;
   --light-grey: #8596A6;
-
+  --dark-green: #009C22;
 
 
   --heading-color: #233876;
@@ -247,15 +247,108 @@ small {
 /* MENU SECTION SETCION STARTS HERE */
 .cartSectionRight {
   padding: 30px;
-  width: 300px;
-  background-color: var(--card-bg);
-  height: 100vh;
+  width: 450px;
+  background-color: var(--light-white);
+  height: 95vh;
+  /* Adjust height for viewport */
   position: fixed;
+  /* Keep the entire cart section fixed */
   top: 0;
-  right: -300px;
-  /* Initially hide the cart off-screen */
+  right: 0;
+  /* Make it visible from the right side */
   transition: right 0.8s ease;
   font-weight: bold;
+  box-shadow: inset 0.1px 0.1px 5px var(--primary-clr);
+  border-radius: 30px 0px 0px 30px;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  /* Stack content vertically */
+}
+
+.cartTopSec {
+  position: sticky;
+  /* Keep the top section fixed */
+  top: 0;
+  z-index: 10;
+  /* Ensure it stays above the scrollable content */
+  background-color: var(--light-white);
+  /* Match the background */
+  padding-bottom: 10px;
+}
+
+.cartScrollContainer {
+  /* flex-grow: 1; Fill the remaining space */
+  max-height: 350px;
+  /* Adjust based on top and bottom sections */
+  overflow-y: scroll;
+  /* Scrollable content */
+  overflow-x: hidden !important;
+  margin-bottom: 20px;
+
+  /* Custom Scrollbar Styling */
+  scrollbar-width: thin;
+  /* For Firefox */
+  scrollbar-color: green transparent;
+  /* Hide the scrollbar in WebKit-based browsers (Chrome, Safari, Edge) */
+
+  scrollbar-width: thin;
+  /* For Firefox */
+  /* For Firefox */
+  /* -ms-overflow-style: none; */
+  /* For Internet Explorer and Edge */
+  /* Scrollbar color for Firefox */
+  /* Add some space at the bottom */
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.cartScrollContainer::-webkit-scrollbar {
+  display: none;
+  /* Completely hide the scrollbar */
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+.cartScrollContainer::-webkit-scrollbar {
+  width: 2px;
+  /* Set scrollbar width */
+  height: 100px;
+  /* Set scrollbar height */
+}
+
+.cartScrollContainer::-webkit-scrollbar-thumb {
+  background-color: green;
+  /* Color of the scroll thumb */
+  border-radius: 10px;
+  /* Round the scrollbar edges */
+}
+
+.cartScrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+  /* Background of the scrollbar track */
+}
+
+.cartScrollContainer::-webkit-scrollbar-thumb {
+  background-color: green;
+  /* Color of the scroll thumb */
+  border-radius: 10px;
+  /* Round the scrollbar edges */
+}
+
+.cartScrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+  /* Background of the scrollbar track */
+}
+
+.cartAmountSection {
+  /* position: sticky; Keep the bottom section fixed */
+  /* bottom: 0; */
+  z-index: 10;
+  /* Ensure it stays above the scrollable content */
+  background-color: var(--light-white);
+  padding-top: 10px;
+  overflow: hidden;
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  /* Slight shadow for separation */
 }
 
 .cartSectionRight.show {
@@ -263,7 +356,7 @@ small {
 }
 
 .cartSectionRight.hide {
-  right: -300px;
+  right: -450px;
 }
 
 .cartSectionRight h3 {
@@ -320,6 +413,15 @@ small {
 
 
 
+
+.headerSection .form-control:focus {
+  background: none;
+}
+
+.input-group-text svg {
+  cursor: pointer;
+}
+
 .headerSection input {
   background: none;
 }
@@ -352,6 +454,7 @@ small {
 .navBartoggleBtn {
 
   font-size: 24px;
+  font-weight: 900;
   color: var(--primary-clr);
   background: none;
   border: none;
@@ -364,7 +467,7 @@ small {
   flex-grow: 1; /* Allows the search bar to take available space */
 
 /* } */
-*/ .notificationIconTop,
+.notificationIconTop,
 .toggleNavIcon,
 .logoutComp {
   display: flex;
@@ -387,6 +490,60 @@ small {
 .toggleNavIcon {
   font-size: 30px;
   color: var(--primary-clr);
+}
+
+.cardItemName {
+  color: var(--secondary-clr);
+  font-size: 16px;
+  font-weight: 600;
+
+}
+
+.cardItemPrice {
+  color: var(--primary-clr);
+}
+
+.cartaddBtn,
+.cartRemoveBtn {
+  background-color: var(--primary-clr);
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-white);
+}
+
+.cartCardMainOuter {
+  padding: 10px;
+  margin-right: 0cqb20px;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+
+}
+
+.cartAmountSection {
+  margin-top: 20px;
+  font-weight: 500;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.cartItemAmount {
+  font-size: 14px;
+}
+
+.cartSubTotalAmount {
+  color: var(--dark-green);
+}
+
+.placeOrderBtn {
+  padding: 5px;
+  background-color: var(--dark-green);
+  color: var(--light-white);
+  border: none;
+  border-radius: 10px;
+  width: 100%;
 }
 
 /* ADD TO CART ENDS HERE */
