@@ -9,7 +9,7 @@
   --primary-clr: #EE791C;
   --secondary-clr: #0C2640;
   --light-grey: #8596A6;
-  --dark-green: #009C22;
+  --dark-green:rgb(20 135 63);;
 
 
   --heading-color: #233876;
@@ -30,6 +30,25 @@
 
 }
 
+h1 {
+  font-size: 54px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 28px !important;
+  font-weight: 600 !important;
+}
+
+/* h3 {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 36px;
+  font-weight: 600;
+} */
 
 /* LOGIN SECTION STYLES STARTS HERE  */
 .loginSection {
@@ -246,6 +265,33 @@ small {
 
 
 /* MENU SECTION SETCION STARTS HERE */
+
+.rating-container {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment */
+  margin: 0;
+}
+
+.menuItemRatings {
+  color: #FFD700; /* Gold color for the star */
+  margin-right: 5px; /* Adds space between the star and the rating */
+  display: flex;
+  align-items: center; /* Ensures the star is vertically aligned */
+}
+
+.rating-value {
+  font-size: 16px; /* Adjust font size to match your design */
+  display: flex;
+  align-items: center;
+}
+.foodCatgoryImg img {
+  width: 100%; /* Ensures the image takes up full width */
+  height: 200px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensures the image covers the area while maintaining the aspect ratio */
+}
+
+
+
 .cartSectionRight {
   padding: 30px;
   width: 450px;
@@ -256,6 +302,7 @@ small {
   /* Keep the entire cart section fixed */
   top: 0;
   right: 0;
+  z-index: 2;
   /* Make it visible from the right side */
   transition: right 0.8s ease;
   font-weight: bold;
@@ -374,12 +421,17 @@ small {
 
 .menuItemName {
   color: var(--secondary-clr);
-  font-size: 20px;
+  /* font-size: 20px; */
   font-weight: 700;
 }
 
-.menuItemPrice,
+
 .menuItemRatings {
+  color: var(--dark-green);
+  font-weight: 700;
+}
+.menuItemPrice
+ {
   color: var(--primary-clr);
   font-weight: 700;
 }
@@ -393,18 +445,19 @@ small {
   color: var(--light-white);
   padding: 5px 10px;
   border: none;
+  font-size: 13px;
   border-radius: 10px;
   font-weight: 600;
 }
 
 .menuSection h2 {
   color: var(--secondary-clr);
-  font-size: 48px;
-  font-weight: 600;
+
 }
 
 .menuSection .secBtmCnt {
   color: var(--grey-color);
+  font-weight: 500;
 }
 
 /* NAVBAR STYLES */
@@ -551,16 +604,21 @@ small {
 /* NAV BAR LEFT STARTS HERE  */
 
 .navBarLeft {
-  background-color: var(--light-white);
+  /* background-color: var(--light-white); */
   height: 100vh;
   box-shadow: 0.2px 0.2px 10px rgb(212, 212, 212);
   width: fit-content;
 
 }
 
+
+
+
+
+
 .navBarLeft li {
   list-style-type: none;
-  padding: 30px;
+  padding: 30px 15px;
   text-align: center;
 }
 
@@ -573,8 +631,48 @@ small {
 
 .navBarLeft svg {
   color: var(--grey-color);
-  font-size: 70px;
-  padding: 10px;
+  /* font-size: 30px; */
+  padding: 10px !important; 
 }
 
+
+
+
 /* NAV BAR LEFT ENDS HERE  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DASHBOARD STARTS HERE  */
+
+
+.dashBoardMain {
+  display: flex;
+}
+
+.dashBoardLeft {
+  width: 100px;
+  flex-shrink: 0;
+}
+
+.dashboardRight {
+  padding: 50px;
+  flex-grow: 1;
+  /* Takes up the remaining space */
+}
+
+
+/* DASHBOARD ENDS  HERE  */

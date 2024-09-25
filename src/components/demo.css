@@ -1,53 +1,16 @@
-body {
-    background-color: #f8f9fa; /* Light background */
-    color: #333;
-    font-family: Arial, sans-serif;
+.ant-tabs-tab{
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-clr) !important;
+}
+:where(.css-dev-only-do-not-override-qnu6hi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color:var(--primary-clr);
+  text-shadow: 0 0 0.25px currentcolor;
+}/* Customize the color of the active tab's underline (active bar) */
+.ant-tabs-ink-bar {
+  background-color: #EE791C !important; /* Set the active bar color */
 }
 
-.order-report {
-    margin: 30px;
-    background-color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: white;
-}
-
-.avatar img {
-    width: 100%;
-    border-radius: 50%;
-}
-
-.status-badge {
-    padding: 5px 10px;
-    border-radius: 12px;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-.status-badge.completed {
-    background-color: #00b894;
-}
-
-.status-badge.preparing {
-    background-color: #a29bfe;
-}
-
-.status-badge.pending {
-    background-color: #fdcb6e;
-}
-
-table th, table td {
-    vertical-align: middle;
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #EE791C !important; /* Customize active tab text color */
 }

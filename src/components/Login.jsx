@@ -97,7 +97,7 @@ const Login = () => {
 
     return (
         <section className='loginSection'>
-            <div className="container">
+            {/* <div className="container"> */}
                 <div className="row">
                     <div className="col-md-6">
                         <img src={img1} alt="Login Section" className='img-fluid' />
@@ -157,7 +157,7 @@ const Login = () => {
                             </form>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
             </div>
         </section>
     );

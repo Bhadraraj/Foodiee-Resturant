@@ -1,97 +1,45 @@
 import React from 'react';
-import './demo.css'; // Custom styles
+import { Segmented, Tabs } from 'antd';
+import HotDishes from './dishes/HotDishes'
+import Dessert from './dishes/Dessert'
+import ColdDishes from './dishes/ColdDishes'
 
-const orders = [
+const onChange = (key) => {
+  console.log(key);
+};
+const items = [
   {
-    customer: 'Eren Jaegar',
-    menu: 'Spicy seasoned seafood noodles',
-    payment: '$125',
-    status: 'Completed',
-    avatarColor: '#FFD700', // Gold for avatar
+    key: '1',
+    label: 'Hot Dishes',
+    children: <HotDishes />,
   },
   {
-    customer: 'Reiner Braunn',
-    menu: 'Salted Pasta with mushroom sauce',
-    payment: '$145',
-    status: 'Preparing',
-    avatarColor: '#87CEEB', // Blue for avatar
+    key: '2',
+    label: 'Cold Dishes',
+    children: <ColdDishes />,
   },
   {
-    customer: 'Levi Ackerman',
-    menu: 'Beef dumpling in hot and sour soup',
-    payment: '$105',
-    status: 'Pending',
-    avatarColor: '#FF69B4', // Pink for avatar
-  },
-  {
-    customer: 'Historia Reiss',
-    menu: 'Hot spicy fried rice with omelet',
-    payment: '$45',
-    status: 'Completed',
-    avatarColor: '#00FA9A', // Green for avatar
-  },
-  {
-    customer: 'Hanji Zoe',
-    menu: 'Hot spicy fried rice with omelet',
-    payment: '$245',
-    status: 'Completed',
-    avatarColor: '#8A2BE2', // Purple for avatar
+    key: '3',
+    label: 'Deserts ',
+    children: <Dessert />,
   },
 ];
-
-const Demo = () => {
+const App = () => {
+  const [alignValue, setAlignValue] = React.useState('start');
   return (
-    <div className="container order-report">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Order Report</h2>
-        <button className="btn btn-outline-secondary d-flex align-items-center">
-          <i className="bi bi-filter" /> Filter Order
-        </button>
-      </div>
-      <table className="table table-borderless align-middle">
-        <thead className="table-light">
-          <tr>
-            <th>Customer</th>
-            <th>Menu</th>
-            <th>Total Payment</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map((order, index) => (
-            <tr key={index}>
-              <td>
-                <div className="d-flex align-items-center">
-                  <div
-                    className="avatar me-3"
-                    style={{ backgroundColor: order.avatarColor }}
-                  >
-                    {order.customer.charAt(0)}
-                  </div>
-                  {order.customer}
-                </div>
-              </td>
-              <td>{order.menu}</td>
-              <td>{order.payment}</td>
-              <td>
-                <span
-                  className={`status-badge ${
-                    order.status.toLowerCase() === 'completed'
-                      ? 'completed'
-                      : order.status.toLowerCase() === 'preparing'
-                      ? 'preparing'
-                      : 'pending'
-                  }`}
-                >
-                  {order.status}
-                </span>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+
+      <Tabs
+        defaultActiveKey="1"
+        items={items}
+        onChange={onChange}
+        indicator={{
+          size: (origin) => origin - 30,
+          align: alignValue,
+        }}
+      />
+
+    </>
   );
 };
-
-export default Demo;
+export default App;

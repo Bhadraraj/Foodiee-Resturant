@@ -24,7 +24,7 @@ const NavBarTop = () => {
     return (
         <>
             <div className="container navBarTopCartMain">
-                <header className="headerSection">
+                <header className="headerSection p-0">
                     <div className="container">
                         <div className="navBar d-flex align-items-center justify-content-between">
 

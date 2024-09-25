@@ -35,11 +35,11 @@ function App() {
         <>
           <NavBarTop />
           <div className="container">
-            <div className="row d-flex">
-              <div className="col-2 p-0">
+            <div className="dashBoardMain">
+              <div className="leftNavMain">
                 <NavBarLeft />
               </div>
-              <div className="col-10 p-4">
+              <div className="dashboardRight">
                 <Routes>
                   <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                   <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
@@ -54,7 +54,6 @@ function App() {
           </div>
         </>
       )}
-
       {/* Routes outside the flex layout */}
       <Routes>
         <Route path="/login" element={<Login />} /> {/* Make sure the login page is here */}
