@@ -1,16 +1,21 @@
-.ant-tabs-tab{
+.ant-tabs-tab {
   font-size: 20px;
   font-weight: 600;
   color: var(--secondary-clr) !important;
 }
+
 :where(.css-dev-only-do-not-override-qnu6hi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color:var(--primary-clr);
+  color: var(--primary-clr);
   text-shadow: 0 0 0.25px currentcolor;
-}/* Customize the color of the active tab's underline (active bar) */
+}
+
+/* Customize the color of the active tab's underline (active bar) */
 .ant-tabs-ink-bar {
-  background-color: #EE791C !important; /* Set the active bar color */
+  background-color: #EE791C !important;
+  /* Set the active bar color */
 }
 
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
-  color: #EE791C !important; /* Customize active tab text color */
+  color: #EE791C !important;
+  /* Customize active tab text color */
 }

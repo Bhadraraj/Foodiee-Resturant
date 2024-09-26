@@ -101,6 +101,7 @@ const ColdDishes     = () => {
                   <div className="foodCatgoryImg">
                     <div className="row">
                       <div className="col-12">
+                        
                         <img src={coldDishes.image} alt={coldDishes.name} className="img-fluid" /> {/* No need for w-100 since width is already 100% in CSS */}
                       </div>
                     </div>

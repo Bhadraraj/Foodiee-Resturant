@@ -13,7 +13,7 @@
   --black-clr: #000208;
   --faded-color: #F6F6F6;
   --grey-color: #6B7280;
-  --navLeftIcon:#C1C1C1;
+  --navLeftIcon: #C1C1C1;
 
 }
 
@@ -26,6 +26,12 @@
   /* Default color */
   font-size: 50px;
   padding: 10px;
+  transition: 1s;
+}
+
+.navBarLeft svg:hover {
+  color: var(--primary-clr);
+  transform: scale(1.2);
 }
 
 /* Change the background of the li when the link is active */

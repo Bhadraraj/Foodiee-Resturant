@@ -34,14 +34,14 @@ function App() {
       {shouldShowNav && (
         <>
           <NavBarTop />
-          <div className="container">
+          <div className="container-xxl">
             <div className="dashBoardMain">
               <div className="leftNavMain">
                 <NavBarLeft />
               </div>
               <div className="dashboardRight">
                 <Routes>
-                  <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                  <Route path="/" element={<ProtectedRoute><CustomerList /></ProtectedRoute>} />
                   <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
                   <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
                   <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

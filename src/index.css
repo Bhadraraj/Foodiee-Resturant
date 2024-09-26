@@ -9,7 +9,8 @@
   --primary-clr: #EE791C;
   --secondary-clr: #0C2640;
   --light-grey: #8596A6;
-  --dark-green:rgb(20 135 63);;
+  --dark-green: rgb(20 135 63);
+  ;
 
 
   --heading-color: #233876;
@@ -268,29 +269,71 @@ small {
 
 .rating-container {
   display: flex;
-  align-items: center; /* Ensures vertical alignment */
+  align-items: center;
+  /* Ensures vertical alignment */
   margin: 0;
 }
 
 .menuItemRatings {
-  color: #FFD700; /* Gold color for the star */
-  margin-right: 5px; /* Adds space between the star and the rating */
+  color: #FFD700;
+  /* Gold color for the star */
+  margin-right: 5px;
+  /* Adds space between the star and the rating */
   display: flex;
-  align-items: center; /* Ensures the star is vertically aligned */
+  align-items: center;
+  /* Ensures the star is vertically aligned */
 }
 
 .rating-value {
-  font-size: 16px; /* Adjust font size to match your design */
+  font-size: 16px;
+  /* Adjust font size to match your design */
   display: flex;
   align-items: center;
 }
-.foodCatgoryImg img {
-  width: 100%; /* Ensures the image takes up full width */
-  height: 200px; /* Set a fixed height for all images */
-  object-fit: cover; /* Ensures the image covers the area while maintaining the aspect ratio */
+
+
+.ant-tabs-tab {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--secondary-clr) !important;
+}
+
+:where(.css-dev-only-do-not-override-qnu6hi).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: var(--primary-clr);
+  text-shadow: 0 0 0.25px currentcolor;
+}
+
+/* Customize the color of the active tab's underline (active bar) */
+.ant-tabs-ink-bar {
+  background-color: #EE791C !important;
+  /* Set the active bar color */
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #EE791C !important;
+  /* Customize active tab text color */
 }
 
 
+
+.foodCatgoryImg{
+  overflow: hidden;
+}
+.foodCatgoryImg img {
+  width: 100%;
+  /* Ensures the image takes up full width */
+  height: 200px;
+  /* Set a fixed height for all images */
+  object-fit: cover;
+  transition: 1s;
+  /* animation-name: foodCardAnimation;
+  animation-duration: 1s; */
+  /* Ensures the image covers the area while maintaining the aspect ratio */
+}
+
+.foodCatgoryImg img:hover{
+  transform: scale(1.1);
+}
 
 .cartSectionRight {
   padding: 30px;
@@ -430,8 +473,8 @@ small {
   color: var(--dark-green);
   font-weight: 700;
 }
-.menuItemPrice
- {
+
+.menuItemPrice {
   color: var(--primary-clr);
   font-weight: 700;
 }
@@ -632,7 +675,7 @@ small {
 .navBarLeft svg {
   color: var(--grey-color);
   /* font-size: 30px; */
-  padding: 10px !important; 
+  padding: 10px !important;
 }
 
 
@@ -670,6 +713,7 @@ small {
 
 .dashboardRight {
   padding: 50px;
+  padding-right: 0px;
   flex-grow: 1;
   /* Takes up the remaining space */
 }
