@@ -41,7 +41,7 @@ function App() {
               </div>
               <div className="dashboardRight">
                 <Routes>
-                  <Route path="/" element={<ProtectedRoute><CustomerList /></ProtectedRoute>} />
+                  <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                   <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
                   <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
                   <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />

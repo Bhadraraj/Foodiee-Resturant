@@ -3,72 +3,79 @@ import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space, Menu } from 'antd'; // Import Menu from antd
 import './demo.css'; // Custom styles
 import '../styles/customerList.css'; // Custom styles
-import { MdOutlineCurrencyRupee } from "react-icons/md";
+
 import TotalProductSale from './TotalProductSale'
+
+
 const orders = [
-  {
-    customer: 'Eren Jaegar',
-    menu: 'Spicy seasoned seafood noodles',
-    payment: '125',
-    status: 'Completed',
-    avatarColor: '#FFD700', // Gold for avatar
-  },
+
   {
     customer: 'Reiner Braunn',
     menu: 'Salted Pasta with mushroom sauce',
-    payment: '145',
+    payment: '$145',
     status: 'Preparing',
-    avatarColor: '#87CEEB', // Blue for avatar
+    avatarColor: '#722ed1', // Blue for avatar
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
-    payment: '105',
+    payment: '$105',
     status: 'Pending',
-    avatarColor: '#FF69B4', // Pink for avatar
-  },
-  {
-    customer: 'Historia Reiss',
-    menu: 'Hot spicy fried rice with omelet',
-    payment: '145',
-    status: 'Completed',
-    avatarColor: '#DCF8F0', // Green for avatar
-  },
-  {
-    customer: 'Historia Reiss',
-    menu: 'Hot spicy fried rice with omelet',
-    payment: '145',
-    status: 'Completed',
-    avatarColor: '#DCF8F0', // Green for avatar
+    avatarColor: '#ff000d', // Pink for avatar
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
     payment: '$45',
     status: 'Completed',
-    avatarColor: '#DCF8F0', // Green for avatar
+    avatarColor: '#36a300', // Green for avatar
+  },
+
+  {
+    customer: 'Reiner Braunn',
+    menu: 'Salted Pasta with mushroom sauce',
+    payment: '$145',
+    status: 'Preparing',
+    avatarColor: '#722ed1', // Blue for avatar
+  },
+  {
+    customer: 'Levi Ackerman',
+    menu: 'Beef dumpling in hot and sour soup',
+    payment: '$105',
+    status: 'Pending',
+    avatarColor: '#ff000d', // Pink for avatar
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
     payment: '$45',
     status: 'Completed',
-    avatarColor: '#DCF8F0', // Green for avatar
+    avatarColor: '#36a300', // Green for avatar
+  },
+
+  {
+    customer: 'Reiner Braunn',
+    menu: 'Salted Pasta with mushroom sauce',
+    payment: '$145',
+    status: 'Preparing',
+    avatarColor: '#722ed1', // Blue for avatar
+  },
+  {
+    customer: 'Levi Ackerman',
+    menu: 'Beef dumpling in hot and sour soup',
+    payment: '$105',
+    status: 'Pending',
+    avatarColor: '#ff000d', // Pink for avatar
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
     payment: '$45',
     status: 'Completed',
-    avatarColor: '#DCF8F0', // Green for avatar
+    avatarColor: '#36a300', // Green for avatar
   },
-  {
-    customer: 'Hanji Zoe',
-    menu: 'Hot spicy fried rice with omelet',
-    payment: '$245',
-    status: 'Completed',
-    avatarColor: '#8A2BE2', // Purple for avatar
-  },
+
+
 ];
 
 const dropdownItems = (onFilter) => (
@@ -138,7 +145,7 @@ const Demo = () => {
             {currentOrders.length > 0 ? (
               currentOrders.map((order, index) => (
                 <tr key={index}>
-                  <th scope="row ">
+                  <th scope="row">
                     <div className="d-flex align-items-center">
                       <div
                         className="avatar me-3"
@@ -150,8 +157,8 @@ const Demo = () => {
                     </div>
                   </th>
                   <td>{order.menu}</td>
-                  <td> <MdOutlineCurrencyRupee />{order.payment}</td>
-                  <td>
+                  <td>{order.payment}</td>
+                  <td className=''>
                     <span
                       className={`status-badge ${order.status.toLowerCase()}`}
                     >
@@ -202,3 +209,6 @@ const Demo = () => {
 };
 
 export default Demo;
+
+
+

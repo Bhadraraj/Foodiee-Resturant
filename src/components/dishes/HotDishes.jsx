@@ -1,19 +1,14 @@
-import React from 'react'
-
+import React, { useState } from 'react';
 import { MdOutlineCurrencyRupee } from "react-icons/md";
-
 import { FaStar } from "react-icons/fa";
-
 import { GrFormAdd } from "react-icons/gr";
-
-// import Logout from './Logout'
-
-import briyani from '../../images/briyani.png'
+import { FiSearch } from "react-icons/fi";
 
 const HotDishes = () => {
 
 
-  const foodItems = [
+
+  const hotDishes = [
     {
       id: 1,
       name: 'Chicken Biryani',
@@ -55,6 +50,16 @@ const HotDishes = () => {
       description: 'Juicy and smoky chicken marinated in yogurt and spices, cooked in a tandoor.',
       rating: 4.8
     },
+
+    {
+      id: 6,
+      name: 'Dal Makhani',
+      image: 'https://www.funfoodfrolic.com/wp-content/uploads/2023/04/Dal-Makhani-Blog.jpg',  // Free image link for Dal Makhani
+      price: 120,
+      description: 'A rich and creamy lentil dish cooked with butter and aromatic Indian spices.',
+      rating: 4.9
+    },
+
     {
       id: 7,
       name: 'Chicken Tikka Masala',
@@ -89,71 +94,138 @@ const HotDishes = () => {
     },
 
 
+
+
   ];
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredDishes, setFilteredDishes] = useState(hotDishes);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8; // Number of items per page
 
+  const handleSearch = () => {
+    const filtered = hotDishes.filter(dish =>
+      dish.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      dish.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredDishes(filtered.length > 0 ? filtered : []); // If no dishes match, set to empty array
+    setCurrentPage(1); // Reset to the first page when searching
+  };
+
+  // Calculate total pages
+  const totalPages = Math.ceil(filteredDishes.length / itemsPerPage);
+
+  // Get current dishes to display
+  const indexOfLastDish = currentPage * itemsPerPage;
+  const indexOfFirstDish = indexOfLastDish - itemsPerPage;
+  const currentDishes = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <div>
       <section className="menuSection">
-
-        {/* <div className="container"> */}
-
         <div className="row g-4">
-          <h2 className='mb-0'>SAVORY SENSATIONS</h2>
-          <p className='secBtmCnt m-0 mb-2'>Ignite your senses with every bite.</p>
-        {/* <small className='m-0'>Our hot dishes are crafted to perfection, combining rich flavors and fragrant spices that bring warmth and comfort to your plate. From sizzling biryanis to aromatic curries, each dish offers a culinary journey like no other.</small> */}
-          {foodItems.map((foodItem) => (
-            <div key={foodItem.id} className="col-xxl-3 col-xl-4  col-md-6 d-flex justify-content-center align-items-center">
-              <div className="menuCardOuter">
-                <div className="menuCard">
-                  <div className="foodCatgoryImg">
-                    <div className="row">
-                      <div className="col-12">
-                        <img src={foodItem.image} alt={foodItem.name} className="img-fluid" /> {/* No need for w-100 since width is already 100% in CSS */}
+          <h2 className='mb-0'>SAVORY SENSATIONS</h2> <p className='secBtmCnt m-0 mb-2'>Ignite your senses with every bite.</p>
+
+          <div className="search-bar mb-3">
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Find your favorite dish..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                aria-describedby="basic-addon2"
+              />
+              <span className="input-group-text" onClick={handleSearch}>
+                <FiSearch />
+              </span>
+            </div>
+          </div>
+
+          {currentDishes.length > 0 ? (
+            currentDishes.map((dish) => (
+              <div key={dish.id} className="col-xxl-3 col-xl-4 col-md-6 d-flex justify-content-center align-items-center">
+                <div className="menuCardOuter">
+                  <div className="menuCard">
+                    <div className="foodCatgoryImg">
+                      <div className="row">
+                        <div className="col-12">
+                          <img src={dish.image} alt={dish.name} className="img-fluid" />
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-
-                  <div className="row py-2">
-                    <div className="col-8 d-flex justify-content-start align-items-center">
-                      <p className="menuItemName mb-0 ">{foodItem.name}</p>
+                    <div className="row py-2">
+                      <div className="col-8 d-flex justify-content-start align-items-center">
+                        <p className="menuItemName mb-0 ">{dish.name}</p>
+                      </div>
+                      <div className="col-4 ps-0 d-flex justify-content-end align-items-center">
+                        <p className="menuItemPrice mb-0"><MdOutlineCurrencyRupee />{dish.price}.00</p>
+                      </div>
                     </div>
-                    <div className="col-4 ps-0 d-flex justify-content-end align-items-center">
-                      <p className="menuItemPrice mb-0"><MdOutlineCurrencyRupee />{foodItem.price} .00</p>
-                    </div>
-                  </div>
-                  <p className="menuItemContent">{foodItem.description}</p>
-                  <div className="row d-flex mb-1 justify-content-start align-items-center">
-                    <div className="col-6">
-                      <p className="d-flex mb-0 justify-content-start align-items-center rating-container">
-                        <span className="menuItemRatings"><FaStar /></span>
-                        <span className="rating-value">{foodItem.rating}</span>
-                      </p>
-                    </div>
-
-                    <div className="col-6 d-flex justify-content-end align-items-center">
-                      <button className="addMenuItems d-flex justify-content-end align-items-center">
-                        <GrFormAdd /> ADD
-                      </button>
+                    <p className="menuItemContent">{dish.description}</p>
+                    <div className="row d-flex mb-1 justify-content-start align-items-center">
+                      <div className="col-6">
+                        <p className="d-flex mb-0 justify-content-start align-items-center rating-container">
+                          <span className="menuItemRatings"><FaStar /></span>
+                          <span className="rating-value">{dish.rating}</span>
+                        </p>
+                      </div>
+                      <div className="col-6 d-flex justify-content-end align-items-center">
+                        <button className="addMenuItems d-flex justify-content-end align-items-center">
+                          <GrFormAdd /> ADD
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))
+          ) : (
+            <p>No DISHES FOUND</p> // Show this when no dishes match
+          )}
 
-          ))}
-          {/* </div> */}
+          {/* Pagination Controls */}
+          <div className="pagination justify-content-end mt-3">
+            <button
+              className="btn btn-outline-secondary"
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage(prev => prev - 1)}
+            >
+              Previous
+            </button>
+
+            {/* Page number buttons */}
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                className={`btn ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline-secondary'} mx-1`}
+                onClick={() => handlePageChange(i + 1)}
+              >
+                {i + 1}
+              </button>
+            ))}
+
+            <button
+              className="btn btn-outline-secondary"
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage(prev => prev + 1)}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </section>
-
-
-
-      {/* <Logout/> */}
-
     </div>
-  )
-}
+  );
+};
 
-export default HotDishes
+export default HotDishes;
+
+
+
