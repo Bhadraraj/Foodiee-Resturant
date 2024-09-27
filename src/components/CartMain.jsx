@@ -33,11 +33,9 @@ const CartDemo = () => {
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
-                footer={null} // Remove the default footer buttons
-                width={500} // Adjust width if needed
+                footer={null}
+                width={500}
             >
-               
-
                 <div className="cartScrollContainer">
                     {[...Array(6)].map((_, index) => (
                         <div className="cartCardMainOuter mt-4" key={index}>

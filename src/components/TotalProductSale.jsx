@@ -9,12 +9,16 @@ import { MdBookmarkBorder } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi2";
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 
+// import { LiaRupeeSignSolid } from 'react-icons/lia';
+import CountUp from 'react-countup';
+
 const TotalProductSale = () => {
     return (
         <div>
             {/* <div className="totalProductSale"> */}
+            <div className="container-fluid">
             <div className="row mb-5">
-                <div className="col-md-4">
+                <div className="col-sm-4 ">
 
                     <div className="totalSaleCardMain">
                         <div className="row">
@@ -27,14 +31,16 @@ const TotalProductSale = () => {
                             </div>
                         </div>
                         <h2 className='mb-0'>
-                            <LiaRupeeSignSolid />10,00,000
+                            <LiaRupeeSignSolid />
+                            <CountUp start={800000} end={1000000} duration={2} separator="," />
                         </h2>
                         <p className="totalSaleCardBtm ">
                             Total Revenue
                         </p>
                     </div>
+
                 </div>
-                <div className="col-md-4">
+                <div className="col-sm-4 ">
 
                     <div className="totalSaleCardMain">
                         <div className="row">
@@ -46,14 +52,14 @@ const TotalProductSale = () => {
                             </div>
                         </div>
                         <h2 className='mb-0'>
-                            <LiaRupeeSignSolid />23,456
+                            <LiaRupeeSignSolid />   <CountUp start={1500} end={2500} duration={1} separator="," />
                         </h2>
                         <p className="totalSaleCardBtm ">
                             Total Dish Ordered
                         </p>
                     </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-sm-4 ">
 
                     <div className="totalSaleCardMain">
                         <div className="row">
@@ -65,16 +71,17 @@ const TotalProductSale = () => {
                             </div>
                         </div>
                         <h2 className='mb-0'>
-                            <LiaRupeeSignSolid />1,234
+                            <LiaRupeeSignSolid />    <CountUp start={1000} end={1200} duration={1} separator="," />
                         </h2>
                         <p className="totalSaleCardBtm ">
                             Total Customer
                         </p>
                     </div>
                 </div>
+                {/* </div> */}
             </div>
 
-            {/* </div> */}
+            </div>
         </div>
     )
 }

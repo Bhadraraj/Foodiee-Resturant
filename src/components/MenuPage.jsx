@@ -1,9 +1,10 @@
 import React from 'react';
 import { Segmented, Tabs } from 'antd';
-import HotDishes from './dishes/HotDishes'
-import Dessert from './dishes/Dessert'
-import ColdDishes from './dishes/ColdDishes'
+import HotDishes from './menus/HotDishes'
+import Dessert from './menus/Dessert'
+import ColdDishes from './menus/ColdDishes'
 
+import '../styles/menus.css'
 const onChange = (key) => {
   console.log(key);
 };

@@ -3,7 +3,7 @@ import { MdNotificationsActive } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import logo from '../images/logo.png'
 
-import CartDemo from './CartDemo'
+import Cart from './Cart'
 const NavBarTop = () => {
     const [showCart, setShowCart] = useState(false);
 
@@ -13,7 +13,7 @@ const NavBarTop = () => {
 
     return (
         <>
-            <div className="container-xxl navBarTopCartMain">
+            <div className="navBarTopCartMain">
                 <header className="headerSection p-0">
                     {/* <div className="container"> */}
                         <div className="navBar d-flex align-items-center justify-content-between">
@@ -42,7 +42,7 @@ const NavBarTop = () => {
                                  
 
                                     <div className={`cartSectionRight ${showCart ? 'show' : 'hide'}`}>
-                                        <CartDemo />
+                                        <Cart />
 
                                     </div>
                                 </span>

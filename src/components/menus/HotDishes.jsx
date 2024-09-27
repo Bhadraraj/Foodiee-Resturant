@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { GrFormAdd } from "react-icons/gr";
@@ -102,6 +102,15 @@ const HotDishes = () => {
   const [filteredDishes, setFilteredDishes] = useState(hotDishes);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; // Number of items per page
+  const [expanded, setExpanded] = useState({});
+
+  const toggleReadMore = (id) => {
+    setExpanded((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
 
   const handleSearch = () => {
     const filtered = hotDishes.filter(dish =>
@@ -124,6 +133,19 @@ const HotDishes = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [searchTerm]);
 
   return (
     <div>
@@ -149,7 +171,7 @@ const HotDishes = () => {
 
           {currentDishes.length > 0 ? (
             currentDishes.map((dish) => (
-              <div key={dish.id} className="col-xxl-3 col-xl-4 col-md-6 d-flex justify-content-center align-items-center">
+              <div key={dish.id} className="col-xl-3 col-lg-4 col-sm-6 d-flex justify-content-center align-items-center">
                 <div className="menuCardOuter">
                   <div className="menuCard">
                     <div className="foodCatgoryImg">
@@ -168,7 +190,19 @@ const HotDishes = () => {
                         <p className="menuItemPrice mb-0"><MdOutlineCurrencyRupee />{dish.price}.00</p>
                       </div>
                     </div>
-                    <p className="menuItemContent">{dish.description}</p>
+
+
+                    <p className="menuItemContent">
+                      {expanded[dish.id] ? dish.description : `${dish.description.slice(0, 30)}...`}
+                      <span
+                        className="readMoreLess"
+                        onClick={() => toggleReadMore(dish.id)}
+                      >
+                        {expanded[dish.id] ? 'Read less' : 'Read more'}
+                      </span>
+                    </p>
+
+
                     <div className="row d-flex mb-1 justify-content-start align-items-center">
                       <div className="col-6">
                         <p className="d-flex mb-0 justify-content-start align-items-center rating-container">

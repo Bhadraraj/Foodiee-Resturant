@@ -1,120 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { GrFormAdd } from "react-icons/gr";
 import { FiSearch } from "react-icons/fi";
 
-const Dessert = () => {
+const ColdDishes = () => {
+  const coldDishes = [
+    { id: 1, name: 'Greek Salad', image: 'https://www.tamingtwins.com/wp-content/uploads/2024/07/greek-salad-9.jpg', price: 120, description: 'A refreshing salad made with cucumbers, tomatoes, onions, olives, and feta cheese.', rating: 4.7 },
+    { id: 2, name: 'Caprese Salad', image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg', price: 130, description: 'A simple Italian salad with fresh mozzarella, tomatoes, and basil drizzled with olive oil.', rating: 4.6 },
+    { id: 3, name: 'Cold Soba Noodles', image: 'https://cookingformysoul.com/wp-content/uploads/2022/08/feat2-soba-salad.jpg', price: 150, description: 'Chilled buckwheat noodles served with a savory dipping sauce and fresh vegetables.', rating: 4.5 },
+    { id: 4, name: 'Gazpacho', image: 'https://www.funfoodfrolic.com/wp-content/uploads/2023/03/Gazpacho-Blog.jpg', price: 110, description: 'A cold Spanish soup made with tomatoes, cucumbers, and peppers, perfect for summer.', rating: 4.6 },
+    { id: 5, name: 'Ceviche', image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2023/04/How-To-Make-Ceviche-4-600x399.jpg', price: 180, description: 'Fresh seafood marinated in lime juice with onions, cilantro, and chili peppers.', rating: 4.8 },
+    { id: 6, name: 'Pasta Salad', image: 'https://iwashyoudry.com/wp-content/uploads/2016/02/Pasta-Salad-Web-7.jpg', price: 140, description: 'A hearty salad made with pasta, fresh vegetables, and a tangy vinaigrette.', rating: 4.5 },
+    { id: 7, name: 'Avocado Toast', image: 'https://californiaavocado.com/wp-content/uploads/2020/07/California-Avocado-Toast-Three-Ways-768x532.jpeg', price: 100, description: 'Toasted bread topped with mashed avocado, olive oil, and seasonings.', rating: 4.7 },
+    { id: 8, name: 'Cold Cucumber Soup', image: 'https://www.foodandwine.com/thmb/GWpIhm_82oEDMGenF6rDyN62Qa4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-cold-cucumber-soup-yogurt-and-dill-hero-02-19e5f8e4943f478f813c26a977e40a14.jpg', price: 90, description: 'A cool and creamy cucumber soup with yogurt, dill, and garlic.', rating: 4.3 },
 
 
-  const desserts = [
-    {
-      id: 1,
-      name: 'Gulab Jamun',
-      image: 'https://aartimadan.com/wp-content/uploads/2020/11/milk-powder-gulab-jamuns.jpg',  // Free image link for Gulab Jamun
-      price: 90,
-      description: 'Sweet and soft milk-based dumplings soaked in sugar syrup.',
-      rating: 4.9
-    },
-    {
-      id: 2,
-      name: 'Rasmalai',
-      image: 'https://www.kashmironlinestore.com/cdn/shop/articles/Untitled_design_54.jpg?v=1692702218',  // Free image link for Rasmalai
-      price: 100,
-      description: 'Delicate, spongy cheese balls soaked in a sweet, flavored milk syrup.',
-      rating: 4.8
-    },
-    {
-      id: 3,
-      name: 'Kheer',
-      image: 'https://www.munatycooking.com/wp-content/uploads/2020/04/Kheer-feature-image-500x500.jpg',  // Free image link for Kheer
-      price: 70,
-      description: 'A creamy rice pudding cooked with milk, sugar, and flavored with cardamom and saffron.',
-      rating: 4.7
-    },
-    {
-      id: 4,
-      name: 'Jalebi',
-      image: 'https://www.cookwithnabeela.com/wp-content/uploads/2024/02/1Jalebi.webp',  // Free image link for Jalebi
-      price: 80,
-      description: 'Crispy, bright orange spirals soaked in sugar syrup, a perfect sweet indulgence.',
-      rating: 4.6
-    },
-    {
-      id: 5,
-      name: 'Kulfi',
-      image: 'https://www.blendwithspices.com/wp-content/uploads/2021/06/khoya-kulfi-recipe-500x500.jpg',  // Free image link for Kulfi
-      price: 50,
-      description: 'Traditional Indian ice cream, rich and dense, flavored with cardamom and pistachios.',
-      rating: 4.9
-    },
-    {
-      id: 6,
-      name: 'Chocolate Brownie',
-      image: 'https://recipesblob.oetker.in/assets/0e7149831748458c9502e361e889f726/964x526/brownie-with-vanilla-ice-cream.jpg',  // Free image link for Chocolate Brownie
-      price: 120,
-      description: 'A rich, fudgy chocolate dessert topped with a scoop of vanilla ice cream.',
-      rating: 4.8
-    },
-    {
-      id: 7,
-      name: 'Carrot Halwa',
-      image: 'https://indianvegrecipe.com/wp-content/uploads/2020/01/carrot-halwa-recipe.jpg',  // Free image link for Carrot Halwa
-      price: 90,
-      description: 'Grated carrots cooked in ghee, milk, and sugar, topped with nuts and raisins.',
-      rating: 4.7
-    },
-    {
-      id: 8,
-      name: 'Mango Mousse',
-      image: 'https://thebigmansworld.com/wp-content/uploads/2023/07/mango-mousse-recipe.jpg',  // Free image link for Mango Mousse
-      price: 110,
-      description: 'A light and creamy dessert made with ripe mangoes and whipped cream.',
-      rating: 4.8
-    },
-    {
-      id: 9,
+    { id: 9, name: 'Greek Salad', image: 'https://www.tamingtwins.com/wp-content/uploads/2024/07/greek-salad-9.jpg', price: 120, description: 'A refreshing salad made with cucumbers, tomatoes, onions, olives, and feta cheese.', rating: 4.7 },
+    { id: 10, name: 'Caprese Salad', image: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/07/Caprese-Salad-main-1.jpg', price: 130, description: 'A simple Italian salad with fresh mozzarella, tomatoes, and basil drizzled with olive oil.', rating: 4.6 },
+    { id: 11, name: 'Cold Soba Noodles', image: 'https://cookingformysoul.com/wp-content/uploads/2022/08/feat2-soba-salad.jpg', price: 150, description: 'Chilled buckwheat noodles served with a savory dipping sauce and fresh vegetables.', rating: 4.5 },
+    { id: 12, name: 'Gazpacho', image: 'https://www.funfoodfrolic.com/wp-content/uploads/2023/03/Gazpacho-Blog.jpg', price: 110, description: 'A cold Spanish soup made with tomatoes, cucumbers, and peppers, perfect for summer.', rating: 4.6 },
 
-      name: 'Chum Chum',
-      image: 'https://vaya.in/recipes/wp-content/uploads/2018/03/Chum-chum.jpg',  // Free image link for Chum Chum
-      price: 80,
-      description: 'Soft and spongy milk-based sweet, soaked in sugar syrup and garnished with coconut.',
-      rating: 4.7
-    },
 
-    {
-      id: 10,
-      name: 'Soan Papdi',
-      image: 'https://www.indianrecipeinfo.com/wp-content/uploads/2010/12/Soan-Papdi.jpg',  // Free image link for Soan Papdi
-      price: 100,
-      description: 'A flaky, sweet Indian dessert made from gram flour and sugar, with a unique texture.',
-      rating: 4.6
-    },
-    {
-      id: 11,
-      name: 'Sooji Halwa',
-      image: 'https://www.funfoodfrolic.com/wp-content/uploads/2020/10/Suji-Halwa-Thumbnail.jpg',  // Free image link for Sooji Halwa
-      price: 70,
-      description: 'A sweet dish made from semolina, cooked with ghee, sugar, and flavored with cardamom and nuts.',
-      rating: 4.5
-    }
+
   ];
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredDishes, setFilteredDishes] = useState(desserts);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [expanded, setExpanded] = useState({});
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredDishes, setFilteredDishes] = useState(coldDishes);
+  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8; // Number of items per page
 
-  const toggleReadMore = (id) => {
-    setExpanded((prevState) => ({
-      ...prevState,
-      [id]: !prevState[id],
-    }));
-  };
-
   const handleSearch = () => {
-    const filtered = desserts.filter(dish =>
+    const filtered = coldDishes.filter(dish =>
       dish.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       dish.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -131,16 +48,45 @@ const Dessert = () => {
   const indexOfFirstDish = indexOfLastDish - itemsPerPage;
   const currentDishes = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
 
+
+  const [expanded, setExpanded] = useState({});
+
+  const toggleReadMore = (id) => {
+    setExpanded((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
+
+
+
+
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
+  
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [searchTerm]);
+
+
   return (
-    <div>
+    <>
       <section className="menuSection">
         <div className="row g-4">
-          <h2 className='mb-0'>SWEET ESCAPE</h2>
-          <p className='secBtmCnt m-0 mb-2'>Delight in every decadent bite.</p>
+          <h2 className='mb-0'>CHILLED INDULGENCE</h2>
+          <p className='secBtmCnt m-0 mb-2'>Cool, crisp, and refreshing.</p>
 
           <div className="search-bar mb-3">
             <div className="input-group">
@@ -160,7 +106,7 @@ const Dessert = () => {
 
           {currentDishes.length > 0 ? (
             currentDishes.map((dish) => (
-              <div key={dish.id} className="col-xxl-3 col-xl-4 col-md-6 d-flex justify-content-center align-items-center">
+              <div key={dish.id} className="col-xl-3 col-lg-4 col-sm-6 d-flex justify-content-center align-items-center">
                 <div className="menuCardOuter">
                   <div className="menuCard">
                     <div className="foodCatgoryImg">
@@ -180,7 +126,6 @@ const Dessert = () => {
                       </div>
                     </div>
 
-                    {/* <p className="menuItemContent">{dish.description}</p> */}
                     <p className="menuItemContent">
                       {expanded[dish.id] ? dish.description : `${dish.description.slice(0, 30)}...`}
                       <span
@@ -191,6 +136,7 @@ const Dessert = () => {
                       </span>
                     </p>
 
+                    
                     <div className="row d-flex mb-1 justify-content-start align-items-center">
                       <div className="col-6">
                         <p className="d-flex mb-0 justify-content-start align-items-center rating-container">
@@ -243,10 +189,8 @@ const Dessert = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
-export default Dessert;
-
-
+export default ColdDishes;

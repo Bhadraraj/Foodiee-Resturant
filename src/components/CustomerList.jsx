@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
-import { Dropdown, Space, Menu } from 'antd'; // Import Menu from antd
-import './demo.css'; // Custom styles
-import '../styles/customerList.css'; // Custom styles
+import { Dropdown, Space, Menu } from 'antd';
+import '../styles/customerList.css';
 
 import TotalProductSale from './TotalProductSale'
 
@@ -14,21 +13,21 @@ const orders = [
     menu: 'Salted Pasta with mushroom sauce',
     payment: '$145',
     status: 'Preparing',
-    avatarColor: '#722ed1', // Blue for avatar
+    avatarColor: '#722ed1',
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
     payment: '$105',
     status: 'Pending',
-    avatarColor: '#ff000d', // Pink for avatar
+    avatarColor: '#ff000d',
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
     payment: '$45',
     status: 'Completed',
-    avatarColor: '#36a300', // Green for avatar
+    avatarColor: '#36a300',
   },
 
   {
@@ -36,21 +35,21 @@ const orders = [
     menu: 'Salted Pasta with mushroom sauce',
     payment: '$145',
     status: 'Preparing',
-    avatarColor: '#722ed1', // Blue for avatar
+    avatarColor: '#722ed1',
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
     payment: '$105',
     status: 'Pending',
-    avatarColor: '#ff000d', // Pink for avatar
+    avatarColor: '#ff000d',
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
     payment: '$45',
     status: 'Completed',
-    avatarColor: '#36a300', // Green for avatar
+    avatarColor: '#36a300',
   },
 
   {
@@ -58,21 +57,21 @@ const orders = [
     menu: 'Salted Pasta with mushroom sauce',
     payment: '$145',
     status: 'Preparing',
-    avatarColor: '#722ed1', // Blue for avatar
+    avatarColor: '#722ed1',
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
     payment: '$105',
     status: 'Pending',
-    avatarColor: '#ff000d', // Pink for avatar
+    avatarColor: '#ff000d',
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
     payment: '$45',
     status: 'Completed',
-    avatarColor: '#36a300', // Green for avatar
+    avatarColor: '#36a300',
   },
 
 
@@ -87,7 +86,7 @@ const dropdownItems = (onFilter) => (
   </Menu>
 );
 
-const Demo = () => {
+const CustomerList = () => {
   const [filter, setFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
@@ -208,7 +207,7 @@ const Demo = () => {
   );
 };
 
-export default Demo;
+export default CustomerList;
 
 
 

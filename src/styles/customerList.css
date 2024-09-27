@@ -67,7 +67,7 @@
 
 td,
 th {
-  padding: 30px !important;
+  padding: 15px !important;
 }
 
 .pagination .btn-outline-secondary {
@@ -99,6 +99,7 @@ th {
   border: 1px solid var(--primary-clr);
   border-radius: 10px;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .table-responsive {

@@ -7,7 +7,7 @@ import { notification } from 'antd'; // Import Ant Design notification
 import img1 from '../images/loginLeft.png';
 import { VerticalAlignTopOutlined } from '@ant-design/icons';
 
-
+import '../styles/login.css'
 const Login = () => {
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -58,15 +58,15 @@ const Login = () => {
         e.preventDefault();
         setError('');
         setIsLoading(true);
-    
+
         const emailError = validateEmail(formData.email) ? '' : 'Invalid email format';
         const passwordError = validatePassword(formData.password) ? '' : 'Invalid Password';
-    
+
         setFormErrors({
             email: emailError,
             password: passwordError,
         });
-    
+
         if (emailError || passwordError) {
             setIsLoading(false);
             return;
@@ -81,26 +81,26 @@ const Login = () => {
                 placement: 'top',
                 duration: 0.5, // The message will disappear after 2 seconds
             });
-            
+
             // Redirect after the notification disappears
             setTimeout(() => {
                 navigate('/'); // Redirect to home or any other page
             }, 2000); // Match this with the duration above
-    
+
         } else {
             setError('Invalid credentials');
         }
-    
+
         setIsLoading(false);
     };
-    
+
 
     return (
-        <section className='loginSection'>
-            {/* <div className="container"> */}
-                <div className="row">
-                    <div className="col-md-6">
-                        <img src={img1} alt="Login Section" className='img-fluid' />
+        <section >
+            <div className="container d-flex justify-content-center align items-center">
+                <div className="loginSection">                <div className="row">
+                    <div className="col-md-6 d-flex justify-content-center">
+                        <img src={img1} alt="Login Section" className='img-fluid loginSecImg' />
                     </div>
                     <div className="col-md-6 d-flex justify-content-center align-items-center">
                         <div className="formContainer">
@@ -157,7 +157,8 @@ const Login = () => {
                             </form>
                         </div>
                     </div>
-                {/* </div> */}
+                </div></div>
+
             </div>
         </section>
     );
