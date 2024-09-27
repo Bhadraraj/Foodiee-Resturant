@@ -1,34 +1,15 @@
-:root {
-    --primary-clr: #EE791C;
-    --secondary-clr: #0C2640;
-    --light-grey: #8596A6;
-    --dark-green: #009C22;
-
-
-    --heading-color: #233876;
-    --card-bg: #F5FAF7;
-    --input-bg: #F2F0F9;
-    --button-bg: #2C2A38;
-    --light-white: #FDFCFD;
-    --black-clr: #000208;
-    --faded-color: #F6F6F6;
-    --grey-color: #6B7280;
-
-}
-
-
-
 .totalSaleCardMain {
     box-shadow: 0.2px 0.2px 20px #e8e8e8;
 
     padding: 10px;
 }
-.totalSaleCardMain h2{
+
+.totalSaleCardMain h2 {
     color: var(--primary-clr);
 }
 
 .cardIconTotalSale {
-    background-color:var(--secondary-clr);
+    background-color: var(--secondary-clr);
     display: flex;
     justify-content: center;
     align-items: center;

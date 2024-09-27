@@ -1,26 +1,3 @@
-:root {
-  --primary-clr: #EE791C;
-  --secondary-clr: #0C2640;
-  --light-grey: #8596A6;
-  --dark-green: #009C22;
-
-
-  --heading-color: #233876;
-  --card-bg: #F5FAF7;
-  --input-bg: #F2F0F9;
-  --button-bg: #2C2A38;
-  --light-white: #FDFCFD;
-  --black-clr: #000208;
-  --faded-color: #F6F6F6;
-  --grey-color: #6B7280;
-  --navLeftIcon:#C1C1C1;
-
-}
-
-
-
-
-
 .navBarLeft svg {
   color: var(--navLeftIcon);
   /* Default color */
@@ -45,22 +22,17 @@
   /* Change the SVG color to red when the link is active */
 }
 
+
 /* Apply yellow background to the li containing the active link */
 .navBarLeft ul li a.active-link {
+  transition: 1.2s;
   border-radius: 10px 0px 0px 10px;
-
   background-color: var(--light-white)
-    /* Set background for active link */
 }
 
 .navBarLeft ul li a.active-link {
   display: block;
-  /* Ensure the background color fills the li */
-  ;
-  /* Add padding to make the active state more visible */
 }
-
-
 
 
 @keyframes leftNavAnim {

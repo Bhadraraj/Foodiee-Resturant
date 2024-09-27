@@ -7,9 +7,11 @@
 
 :root {
   --primary-clr: #EE791C;
+  /* --primary-clr: #be3526; */
   --secondary-clr: #0C2640;
   --light-grey: #8596A6;
-  --dark-green:rgb(20 135 63);;
+  --dark-green: rgb(20 135 63);
+  ;
 
 
   --heading-color: #233876;
@@ -209,7 +211,7 @@ small {
 
 
 /* TOP BAR STARTS HERE  */
-.logo img{
+.logo img {
   height: 80PX;
 }
 
@@ -272,33 +274,42 @@ small {
 
 .rating-container {
   display: flex;
-  align-items: center; /* Ensures vertical alignment */
+  align-items: center;
+  /* Ensures vertical alignment */
   margin: 0;
 }
 
 .menuItemRatings {
-  color: #FFD700; /* Gold color for the star */
-  margin-right: 5px; /* Adds space between the star and the rating */
+  color: #FFD700;
+  /* Gold color for the star */
+  margin-right: 5px;
+  /* Adds space between the star and the rating */
   display: flex;
-  align-items: center; /* Ensures the star is vertically aligned */
+  align-items: center;
+  /* Ensures the star is vertically aligned */
 }
 
 .rating-value {
-  font-size: 16px; /* Adjust font size to match your design */
+  font-size: 16px;
+  /* Adjust font size to match your design */
   display: flex;
   align-items: center;
 }
+
 .foodCatgoryImg img {
-  width: 100%; /* Ensures the image takes up full width */
-  height: 200px; /* Set a fixed height for all images */
-  object-fit: cover; /* Ensures the image covers the area while maintaining the aspect ratio */
+  width: 100%;
+  /* Ensures the image takes up full width */
+  height: 200px;
+  /* Set a fixed height for all images */
+  object-fit: cover;
+  /* Ensures the image covers the area while maintaining the aspect ratio */
 }
 
 
 
-.cartSectionRight .ant-btn{
-  background-color:none ;
-border: none !important;
+.cartSectionRight .ant-btn {
+  background-color: none;
+  border: none !important;
 }
 
 .cartTopSec {
@@ -313,6 +324,11 @@ border: none !important;
 }
 
 .cartScrollContainer {
+  scrollbar-width: thin;
+  /* Thin scrollbar for Firefox */
+  scrollbar-color: #cfcfcf #f1f1f1;
+
+  padding: 10px;
   /* flex-grow: 1; Fill the remaining space */
   max-height: 350px;
   /* Adjust based on top and bottom sections */
@@ -417,8 +433,8 @@ border: none !important;
   color: var(--dark-green);
   font-weight: 700;
 }
-.menuItemPrice
- {
+
+.menuItemPrice {
   color: var(--primary-clr);
   font-weight: 700;
 }
@@ -441,9 +457,10 @@ border: none !important;
   color: var(--secondary-clr);
 
 }
-.readMoreLess{
- color: var(--primary-clr);
- cursor: pointer;
+
+.readMoreLess {
+  color: var(--primary-clr);
+  cursor: pointer;
 }
 
 .menuSection .secBtmCnt {
@@ -452,13 +469,13 @@ border: none !important;
 }
 
 
-.menuSection input{
+.menuSection input {
   /* border: 1px solid var(--primary-clr) !important; */
   border-radius: 10px !important;
 
 }
 
-.menuSection .input-group{
+.menuSection .input-group {
 
   width: 100% !important;
 }
@@ -505,7 +522,7 @@ border: none !important;
   height: fit-content;
 } */
 
-.navBartoggleBtn  {
+.navBartoggleBtn {
 
   padding: 0px;
   margin: 0px;
@@ -529,7 +546,8 @@ border: none !important;
 }
 
 
-.navBartoggleBtnRight svg {  border: none;
+.navBartoggleBtnRight svg {
+  border: none;
   background-color: none !important;
 }
 
@@ -622,37 +640,42 @@ border: none !important;
 
 
 .cartScrollContainer {
-  max-height: 400px; /* Example height for the scroll container */
-  overflow-y: auto;  /* Enables vertical scrolling if content overflows */
+  max-height: 400px;
+  /* Example height for the scroll container */
+  overflow-y: auto;
+  /* Enables vertical scrolling if content overflows */
 }
 
 /* Customize the scrollbar width */
 .cartScrollContainer::-webkit-scrollbar {
-  width: 8px;  /* Decrease the width of the vertical scrollbar */
+  width: 8px;
+  /* Decrease the width of the vertical scrollbar */
 }
 
 /* Customize the track of the scrollbar */
 .cartScrollContainer::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track color */
+  background: #f1f1f1;
+  /* Track color */
 }
 
 /* Customize the handle (thumb) of the scrollbar */
 .cartScrollContainer::-webkit-scrollbar-thumb {
-  background: #888; /* Handle color */
-  border-radius: 10px; /* Optional: rounded corners */
-  min-height: 2px; /* This ensures the thumb is at least 2px high */
+  background: #888;
+  /* Handle color */
+  border-radius: 10px;
+  /* Optional: rounded corners */
+  min-height: 2px;
+  /* This ensures the thumb is at least 2px high */
 }
 
 /* Handle on hover */
 .cartScrollContainer::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Darker color on hover */
+  background: #555;
+  /* Darker color on hover */
 }
 
 /* For Firefox */
-.cartScrollContainer {
-  scrollbar-width: thin; /* Thin scrollbar for Firefox */
-  scrollbar-color: #888 #f1f1f1; /* Handle and track color for Firefox */
-}
+
 
 
 
@@ -665,11 +688,11 @@ border: none !important;
 .navBarLeft {
   background-color: var(--primary-clr);
   /* height: 100vh ; */
-  height:fit-content ;
+  height: fit-content;
   /* box-shadow: 0.2px 0.2px 10px rgb(212, 212, 212); */
   /* box-shadow: 0.2px 0.2px 10px rgb(212, 212, 212); */
   width: fit-content;
-  border-radius: 0px 0px 0px 50px ;
+  border-radius: 0px 0px 0px 50px;
 
 }
 
@@ -680,11 +703,14 @@ border: none !important;
 
 .navBarLeft li {
   list-style-type: none;
-  padding: 40px 30px;
+  padding: 40px 0px 30px 30px;
   text-align: center;
 }
 
 .navBarLeft a {
+  padding: 5px 4px;
+
+
   color: var(--black-clr);
   color: var(--heading-color);
   text-decoration: none;
@@ -693,9 +719,9 @@ border: none !important;
 
 .navBarLeft svg {
   /* color: var(--grey-color);  */
-  color: var(--light-white)  !important; 
+  color: var(--light-white) !important;
   /* font-size: 30px; */
-  padding: 10px !important; 
+  padding: 10px !important;
 }
 
 
