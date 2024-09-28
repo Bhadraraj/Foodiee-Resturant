@@ -52,7 +52,7 @@ function App() {
                     <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                     <Route path="/customerList" element={<ProtectedRoute><CustomerList /></ProtectedRoute>} />
                     <Route path="/notification" element={<ProtectedRoute><Notification /></ProtectedRoute>} />
-                    <Route path="/parent" element={<ProtectedRoute><Parent /></ProtectedRoute>} />
+                    {/* <Route path="/parent" element={<Prote ctedRoute><Parent /></ProtectedRoute>} /> */}
                     <Route path="*" element={<Navigate to="/login" />} />
                   </Routes>
                 </div>
