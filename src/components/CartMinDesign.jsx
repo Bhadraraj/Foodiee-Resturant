@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 import { MdOutlineCurrencyRupee, MdAdd } from 'react-icons/md';
 import { TiMinus } from 'react-icons/ti';
 import briyani from '../images/briyani.png';
-import '../styles/cart.css'
+
 const Cart = ({ isOpen, onClose }) => {
   return (
     <Modal
@@ -26,30 +26,7 @@ const Cart = ({ isOpen, onClose }) => {
                   <MdOutlineCurrencyRupee /> 150
                 </p>
               </div>
-
-
               <div className="col-3 d-flex justify-content-between align-items-center ps-0">
-                <div className="addRemoBtn">
-
-          
-                <button className="cartaddBtn"> <MdAdd /> </button>
-                {/* <span className="cartaddBtn">
-                  <MdAdd />
-                </span> */}
-
-                <span className="cartItemAmount mx-1">150</span>
-                <button className="cartRemoveBtn">
-                  <TiMinus />
-                </button>
-                </div>
-                {/* <span className="cartRemoveBtn">
-                  <TiMinus />
-                </span> */}
-              </div>
-
-
-
-              {/* <div className="col-3 d-flex justify-content-between align-items-center ps-0">
                 <span className="cartaddBtn">
                   <MdAdd />
                 </span>
@@ -57,7 +34,7 @@ const Cart = ({ isOpen, onClose }) => {
                 <span className="cartRemoveBtn">
                   <TiMinus />
                 </span>
-              </div> */}
+              </div>
             </div>
           </div>
         ))}
