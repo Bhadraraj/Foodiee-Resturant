@@ -5,27 +5,27 @@ import '../styles/customerList.css';
 
 import TotalProductSale from './TotalProductSale'
 
-
+import { MdOutlineCurrencyRupee, MdAdd, MdNotificationsActive } from 'react-icons/md';
 const orders = [
 
   {
     customer: 'Reiner Braunn',
     menu: 'Salted Pasta with mushroom sauce',
-    payment: '$145',
+    payment: '145',
     status: 'Preparing',
     avatarColor: '#722ed1',
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
-    payment: '$105',
+    payment: '105',
     status: 'Pending',
     avatarColor: '#ff000d',
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
-    payment: '$45',
+    payment: '45',
     status: 'Completed',
     avatarColor: '#36a300',
   },
@@ -33,21 +33,21 @@ const orders = [
   {
     customer: 'Reiner Braunn',
     menu: 'Salted Pasta with mushroom sauce',
-    payment: '$145',
+    payment: '145',
     status: 'Preparing',
     avatarColor: '#722ed1',
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
-    payment: '$105',
+    payment: '105',
     status: 'Pending',
     avatarColor: '#ff000d',
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
-    payment: '$45',
+    payment: '45',
     status: 'Completed',
     avatarColor: '#36a300',
   },
@@ -55,26 +55,24 @@ const orders = [
   {
     customer: 'Reiner Braunn',
     menu: 'Salted Pasta with mushroom sauce',
-    payment: '$145',
+    payment: '145',
     status: 'Preparing',
     avatarColor: '#722ed1',
   },
   {
     customer: 'Levi Ackerman',
     menu: 'Beef dumpling in hot and sour soup',
-    payment: '$105',
+    payment: '105',
     status: 'Pending',
     avatarColor: '#ff000d',
   },
   {
     customer: 'Historia Reiss',
     menu: 'Hot spicy fried rice with omelet',
-    payment: '$45',
+    payment: '45',
     status: 'Completed',
     avatarColor: '#36a300',
-  },
-
-
+  }
 ];
 
 const dropdownItems = (onFilter) => (
@@ -156,13 +154,13 @@ const CustomerList = () => {
                     </div>
                   </th>
                   <td>{order.menu}</td>
-                  <td>{order.payment}</td>
+                  <td><MdOutlineCurrencyRupee />{order.payment}</td>
                   <td className=''>
-                    <span
+                    <div
                       className={`status-badge ${order.status.toLowerCase()}`}
                     >
                       {order.status}
-                    </span>
+                    </div>
                   </td>
                 </tr>
               ))

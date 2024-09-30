@@ -6,6 +6,7 @@
 /* Barlow GOOGLE FONT */
 
 :root {
+  /* --primary-clr:#fe4841; */
   --primary-clr: #EE791C;
   /* --primary-clr: #be3526; */
   --secondary-clr: #0C2640;
@@ -34,70 +35,20 @@
 
 h1 {
   font-size: 54px;
-  font-weight: 700;
+  font-weight: 700;  font-family: var(--secondary-clr);
 }
 
 h2 {
   font-size: 28px !important;
-  font-weight: 600 !important;
+  font-weight: 600 !important;  font-family: var(--secondary-clr);
 }
 
-
-
-
-
-
-.form-control {
-
-  border-radius: 0px 8px 8px 0px !important;
-
-  background-color: white;
-
-}
-
-.input-group-text {
-  border-radius: 20px 0px 0px 20px !important;
-  background-color: white !important;
-  border: none !important;
-  color: var(--primary-clr) !important;
-
-}
-
-.input-group {
-  border: none;
-  border: 1px solid var(--primary-clr);
-  border-radius: 8px;
-  outline: none;
-  width: 100%;
-}
-
-
-.form-control {
-  font-size: 10px;
-  border: none !important;
-}
-
-.form-control:focus {
-  box-shadow: none !important;
-}
-
-/* .issuesSec {
-  display: flex;
-  padding-top: 17px !important;
-  align-items: flex-start !important;
-
+/* h1, h2 {
+  font-family: var(--secondary-clr);
 } */
 
 
-small {
-  font-size: 12px;
-}
 
-.forgotPwd {
-  color: var(--primary-clr);
-  font-weight: 500;
-
-}
 
 
 /* LOGIN SECTION STYLES ENDS HERE  */
@@ -140,7 +91,7 @@ small {
 }
 
 .headerSection {
-  padding: 10px 0;
+  padding: 10px 0 !important;
   box-shadow: 0.2px 0.2px 10px rgb(212, 212, 212);
   /* Adjust as needed */
 }
@@ -252,6 +203,11 @@ small {
 }
 
 
+.cartSectionRight svg {
+  font-size: 30px;
+  position: relative;
+  top: -4px;
+}
 .navBartoggleBtnRight svg {
   border: none;
   background-color: none !important;
@@ -311,7 +267,7 @@ small {
 }
 
 .dashboardRight {
-  padding: 0px;
+  padding: 10px;
   padding-right: 0px;
   flex-grow: 1;
   /* Takes up the remaining space */
@@ -332,7 +288,16 @@ small {
     font-size: 28px !important;
     font-weight: 600 !important;
   }
-.dashboardRight {
-  padding: 5px 0px 0px 5px;
+
+  .dashboardRight {
+    padding: 5px 0px 0px 5px;
+  }
 }
+
+.logo h6 {
+  color: var(--primary-clr);
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0px !important;
+  margin-right: 20px !important;
 }

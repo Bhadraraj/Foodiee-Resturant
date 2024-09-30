@@ -26,7 +26,8 @@
   font-size: 13px;
   padding: 3px 5px;
   border-radius: 10px;
-  width: fit-content;
+  width: 80px;
+  text-align: center;
   font-weight: 500;
 }
 

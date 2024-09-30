@@ -12,7 +12,10 @@ import Demo from './components/Demo';
 import Dashboard from './components/Dashboard';
 import Notification from './components/Notification';
 import CustomerList from './components/CustomerList';
+import Billing from './components/Billing';
+import Report from './components/Report';
 import Parent from './components/Parent';
+
 import { AuthProvider, useAuth } from './components/Auth/AuthContext';
 
 function ProtectedRoute({ children }) {
@@ -50,7 +53,9 @@ function App() {
                     <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
                     <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
                     <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+                    <Route path="/report" element={<ProtectedRoute><Report /></ProtectedRoute>} />
                     <Route path="/customerList" element={<ProtectedRoute><CustomerList /></ProtectedRoute>} />
+                    <Route path="/billing" element={<ProtectedRoute><Billing /></ProtectedRoute>} />
                     <Route path="/notification" element={<ProtectedRoute><Notification /></ProtectedRoute>} />
                     {/* <Route path="/parent" element={<Prote ctedRoute><Parent /></ProtectedRoute>} /> */}
                     <Route path="*" element={<Navigate to="/login" />} />

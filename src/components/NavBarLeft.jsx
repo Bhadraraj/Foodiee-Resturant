@@ -4,11 +4,15 @@ import { AiFillHome } from "react-icons/ai";
 import { MdOutlineMenuBook } from "react-icons/md";
 import { FaClipboardList } from "react-icons/fa";
 import { MdNotificationsActive } from "react-icons/md";
+import { TbReport } from "react-icons/tb";
+import { FaUser } from "react-icons/fa";
 import { BiLogOutCircle } from "react-icons/bi";
 import LogoutBtn from './LogoutBtn';
 import { RiDashboardFill } from "react-icons/ri";
+import { IoIosSettings } from "react-icons/io";
+import '../styles/navLeft.css';
+import { RiBillFill } from "react-icons/ri";
 
-import '../styles/navLeft.css'
 
 const NavBarLeft = () => {
     return (
@@ -30,6 +34,13 @@ const NavBarLeft = () => {
                 </li>
                 <li>
                     <NavLink
+                        to='/report'
+                        className={({ isActive }) => isActive ? 'active-link' : ''}>
+                        <TbReport />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
                         to='/menu'
                         className={({ isActive }) => isActive ? 'active-link' : ''}>
                         <MdOutlineMenuBook />
@@ -47,6 +58,27 @@ const NavBarLeft = () => {
                         to='/customerList'
                         className={({ isActive }) => isActive ? 'active-link' : ''}>
                         <FaClipboardList />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/user'
+                        className={({ isActive }) => isActive ? 'active-link' : ''}>
+                        <FaUser />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/billing'
+                        className={({ isActive }) => isActive ? 'active-link' : ''}>
+                        <RiBillFill />
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        to='/setting'
+                        className={({ isActive }) => isActive ? 'active-link' : ''}>
+                        <IoIosSettings />
                     </NavLink>
                 </li>
                 <li>
