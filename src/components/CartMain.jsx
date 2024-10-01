@@ -1,62 +1,124 @@
-// Cart.js
-import React from 'react';
-import { MdOutlineCurrencyRupee } from "react-icons/md";
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { MdOutlineCurrencyRupee, MdAdd } from "react-icons/md";
+import { TiMinus } from "react-icons/ti"; // Import the minus icon
+import { addToCart, removeFromCart } from '../components/redux/actions/actions';
+import { Modal } from 'antd'; // Ensure you import Modal if using Ant Design
+import '../styles/cart.css';
 
-const Cart = ({ cart, handleAddToCart, handleRemoveFromCart, subtotal, gst, discount, setDiscount }) => {
-  const calculateTotal = () => {
-    let discountAmount = 0;
+const CartMain = ({ isOpen, onClose }) => {
+  const cart = useSelector((state) => state.cart.cart) || []; // Fallback to an empty array if undefined
+  const dispatch = useDispatch();
+  const [discount, setDiscount] = useState(0);
 
-    // Check if discount is in percentage format
-    if (discount.toString().includes('%')) {
-      const percent = parseFloat(discount.replace('%', ''));
-      discountAmount = subtotal * (percent / 100);
-    } else if (!isNaN(discount)) {
-      discountAmount = parseFloat(discount);
-    }
-
-    // Calculate total amount
-    const totalAmount = subtotal + gst - discountAmount;
-    return totalAmount;
+  const handleAdd = (item) => {
+    dispatch(addToCart(item)); // Increment item quantity
   };
 
-  const totalAmount = calculateTotal();
+  const handleRemove = (itemId) => {
+    dispatch(removeFromCart(itemId)); // Decrement item quantity
+  };
+
+  const handleDiscountChange = (e) => {
+    setDiscount(e.target.value);
+  };
+
+  const calculateTotal = () => {
+    const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    const gst = (subtotal * 0.16); // 16% GST
+    const total = subtotal + gst - discount;
+    return total > 0 ? total : 0;
+  };
 
   return (
-    <section className="cartSection">
-      <h2>Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
-        <div>
-          <ul>
+    <div>
+      {cart.length > 0 ? (
+        <>
+          <div className="cartScrollContainer">
             {cart.map(item => (
-              <li key={item.id}>
-                <img src={item.image} alt={item.name} width="50" />
-                <span>{item.name}</span>
-                <span>Quantity: {item.quantity}</span>
-                <button onClick={() => handleAddToCart(item)}>+</button>
-                <button onClick={() => handleRemoveFromCart(item)}>-</button>
-                <span>Total: <MdOutlineCurrencyRupee />{(item.price * item.quantity).toFixed(2)}</span>
-              </li>
+              <div className="cartCardMainOuter mt-4" key={item.id}>
+                <div className="row">
+                  <div className="col-3">
+                    <img src={item.image} alt="Cart Item Img" className="img-fluid" />
+                  </div>
+                  <div className="col-6 me-0 pe-0">
+                    <p className="cardItemName mb-0">{item.name}</p>
+                    <p className="cardItemPrice mb-0">
+                      <MdOutlineCurrencyRupee /> {item.price}
+                    </p>
+                  </div>
+                  <div className="col-3 d-flex justify-content-between align-items-center ps-0">
+                    <div className="addRemoBtn">
+                      <button className="cartaddBtn" onClick={() => handleAdd(item)}> <MdAdd /> </button>
+                      <span className="cartItemAmount mx-1"> {item.quantity}</span>
+                      <button className="cartRemoveBtn" onClick={() => handleRemove(item.id)}>
+                        <TiMinus />
+                      </button>
+                    </div>
+                    {/* Display the total amount for the current product */}
+                    <p className="totalAmount">
+                      <MdOutlineCurrencyRupee /> {(item.price * item.quantity).toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
             ))}
-          </ul>
-          <div>
-            <p>Subtotal: <MdOutlineCurrencyRupee />{subtotal.toFixed(2)}</p>
-            <p>GST (16%): <MdOutlineCurrencyRupee />{gst.toFixed(2)}</p>
-            <p>Discount: 
-              <input 
-                type="text" 
-                value={discount} 
-                onChange={(e) => setDiscount(e.target.value)} 
-                placeholder="Enter discount (amount or %)" 
-              />
-            </p>
-            <h3>Total Amount: <MdOutlineCurrencyRupee />{totalAmount.toFixed(2)}</h3>
+          </div>
+        </>
+      ) : (
+        <p>Your cart is empty</p>
+      )}
+
+      <div className="cartAmountSection">
+        <div className="row">
+          <div className="col-6">
+            <span className="subTotalText">Sub Total</span>
+          </div>
+          <div className="col-6 text-end">
+            <span className="cartSubTotalAmount">Rs.{cart.reduce((total, item) => total + (item.price * item.quantity), 0)}</span>
           </div>
         </div>
-      )}
-    </section>
+        <div className="row">
+          <div className="col-6">
+            <span className="subTotalText">GST 16%</span>
+          </div>
+          <div className="col-6 text-end">
+            <span className="cartSubTotalAmount">Rs. {(cart.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.16).toFixed(2)}</span>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6">
+            <label htmlFor="discount">Discount:</label>
+            <input
+              type="text"
+              id="discount" className='discountIp ms-2'
+              value={discount}
+              onChange={handleDiscountChange}
+              min="0"
+            />
+
+          </div>
+          <div className="col-6 text-end">
+            <span className="cartSubTotalAmount">Rs. {discount}</span>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-6">
+            <span className="subTotalText">Total</span>
+          </div>
+          <div className="col-6 text-end">
+            <span className="cartSubTotalAmount">Rs. {calculateTotal().toFixed(2)}</span>
+          </div>
+        </div>
+        <hr />
+        <div className="row">
+          <div className="col-12">
+            <button className="placeOrderBtn">Place Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default Cart;
+export default CartMain;

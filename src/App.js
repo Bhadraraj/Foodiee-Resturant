@@ -14,7 +14,9 @@ import Notification from './components/Notification';
 import CustomerList from './components/CustomerList';
 import Billing from './components/Billing';
 import Report from './components/Report';
-import Parent from './components/Parent'; 
+import Parent from './components/Parent';
+import CartMain from './components/CartMain';
+import DashboardDemo from '../src/components/DemoDashBoard/DashboardDemo'
 // import CartDemo from '../src/components/menuComponent/Cart'; 
 import Cart from './components/menuComponent/Cart'
 import DessertDem from './components/menuComponent/HotDishes';
@@ -54,9 +56,11 @@ function App() {
                     <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                     <Route path="/menu" element={<ProtectedRoute><MenuPage /></ProtectedRoute>} />
                     <Route path="/demo" element={<ProtectedRoute><Demo /></ProtectedRoute>} />
+                    {/* <Route path="/dashb" element={<ProtectedRoute><DashboardDemo /></ProtectedRoute>} /> */}
                     <Route path="/demoCartLogic" element={<ProtectedRoute><DessertDem /></ProtectedRoute>} />
                     <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                     <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+                    <Route path="/cartDem" element={<ProtectedRoute><CartMain /></ProtectedRoute>} />
                     <Route path="/report" element={<ProtectedRoute><Report /></ProtectedRoute>} />
                     <Route path="/customerList" element={<ProtectedRoute><CustomerList /></ProtectedRoute>} />
                     <Route path="/billing" element={<ProtectedRoute><Billing /></ProtectedRoute>} />

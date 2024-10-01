@@ -1,8 +1,15 @@
 import React from 'react'
+import PieActiveArc from './DashBoardComponent/PieActiveArc'
 
 const Dashboard = () => {
   return (
-    <h1>Dashboard</h1>
+    <div>
+      <h1>
+        Dashboard
+      </h1>
+
+      <PieActiveArc/>
+    </div>
   )
 }
 

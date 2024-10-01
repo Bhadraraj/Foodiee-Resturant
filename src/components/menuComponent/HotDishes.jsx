@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MdOutlineCurrencyRupee } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
 import { GrFormAdd } from "react-icons/gr";
 import { FiSearch } from "react-icons/fi";
-
-import { useDispatch } from 'react-redux';
-
-import { addToCart } from '../redux/actions/actions'; // Import the action
-
-
-import Cart from './Cart';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { addToCart, removeFromCart, updateCartQuantity } from '../redux/actions/actions';
 
 const HotDishes = () => {
-  const dispatch = useDispatch(); // Hook to access dispatch
+  const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.cart);
 
 
   const hotDishes = [
@@ -105,56 +102,57 @@ const HotDishes = () => {
 
   ];
 
-
-
-
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredDishes, setFilteredDishes] = useState(hotDishes);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8; // Number of items per page
+  const itemsPerPage = 8;
   const [expanded, setExpanded] = useState({});
 
   const toggleReadMore = (id) => {
-    setExpanded((prevState) => ({
-      ...prevState,
-      [id]: !prevState[id],
-    }));
+    setExpanded((prevState) => ({ ...prevState, [id]: !prevState[id] }));
   };
+
   const handleAddToCart = (dish) => {
-    console.log('Adding to cart:', dish);
-    dispatch(addToCart(dish)); // Dispatching the action
-  };
-  
-  
-  const handleSearch = () => {
-    const filtered = hotDishes.filter(dish =>
-      dish.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      dish.description.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    setFilteredDishes(filtered.length > 0 ? filtered : []); // If no dishes match, set to empty array
-    setCurrentPage(1); // Reset to the first page when searching
+    dispatch(addToCart(dish));
   };
 
-  // Calculate total pages
-  const totalPages = Math.ceil(filteredDishes.length / itemsPerPage);
-
-  // Get current dishes to display
-  const indexOfLastDish = currentPage * itemsPerPage;
-  const indexOfFirstDish = indexOfLastDish - itemsPerPage;
-  const currentDishes = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handleRemoveFromCart = (dishId) => {
+    dispatch(removeFromCart(dishId));
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      handleSearch();
+  const handleQuantityChange = (dishId, newQuantity) => {
+    if (newQuantity > 0) {
+      dispatch(updateCartQuantity(dishId, newQuantity));
+    } else {
+      dispatch(removeFromCart(dishId));
     }
   };
 
+  const filteredDishes = useMemo(() => {
+    return hotDishes.filter(dish =>
+      dish.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      dish.description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [hotDishes, searchTerm]);
+
+  const { currentDishes, totalPages } = useMemo(() => {
+    const total = Math.ceil(filteredDishes.length / itemsPerPage);
+    const indexOfLastDish = currentPage * itemsPerPage;
+    const indexOfFirstDish = indexOfLastDish - itemsPerPage;
+    const currentDishes = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
+
+    return { currentDishes, totalPages: total };
+  }, [filteredDishes, currentPage, itemsPerPage]);
+
+  const handleSearch = () => {
+    setCurrentPage(1);
+  };
+
   useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Enter') {
+        handleSearch();
+      }
+    };
     document.addEventListener('keydown', handleKeyDown);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -163,10 +161,18 @@ const HotDishes = () => {
 
   return (
     <div>
+      <p className="goToCart">
+
+
+        <Link to="/cartDem">
+          {/* Go to Cart ({Object.keys(cartItems).length} items) */}
+          Go to Cart
+        </Link>
+      </p>
       <section className="menuSection">
         <div className="row g-4">
-          <h2 className='mb-0'>SAVORY SENSATIONS</h2> <p className='secBtmCnt m-0 mb-2'>Ignite your senses with every bite.</p>
-
+          <h2 className='mb-0'>SAVORY SENSATIONS</h2>
+          <p className='secBtmCnt m-0 mb-2'>Ignite your senses with every bite.</p>
           <div className="search-bar mb-3">
             <div className="input-group">
               <input
@@ -175,116 +181,87 @@ const HotDishes = () => {
                 placeholder="Find your favorite dish..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                aria-describedby="basic-addon2"
               />
               <span className="input-group-text" onClick={handleSearch}>
                 <FiSearch />
               </span>
             </div>
           </div>
-
           {currentDishes.length > 0 ? (
-            currentDishes.map((dish) => (
-              <div key={dish.id} className="col-xl-3 col-lg-4 col-sm-6 d-flex justify-content-center align-items-center">
-                <div className="menuCardOuter">
-                  <div className="menuCard">
-                    <div className="foodCatgoryImg">
-                      <div className="row">
-                        <div className="col-12">
-                          <img src={dish.image} alt={dish.name} className="img-fluid" />
+            currentDishes.map((dish) => {
+              const isAdded = cartItems[dish.id];
+              return (
+                <div key={dish.id} className="col-xl-3 col-lg-4 col-sm-6 d-flex justify-content-center align-items-center">
+                  <div className="menuCardOuter">
+                    <div className="menuCard">
+                      <div className="foodCatgoryImg">
+                        <img src={dish.image} alt={dish.name} className="img-fluid" />
+                      </div>
+                      <div className="row py-2">
+                        <div className="col-8">
+                          <p className="menuItemName mb-0">{dish.name}</p>
+                        </div>
+                        <div className="col-4 ps-0 d-flex justify-content-end align-items-center">
+                          <p className="menuItemPrice mb-0"><MdOutlineCurrencyRupee />{dish.price}.00</p>
                         </div>
                       </div>
-                    </div>
-
-                    <div className="row py-2">
-                      <div className="col-8 d-flex justify-content-start align-items-center">
-                        <p className="menuItemName mb-0 ">{dish.name}</p>
-                      </div>
-                      <div className="col-4 ps-0 d-flex justify-content-end align-items-center">
-                        <p className="menuItemPrice mb-0"><MdOutlineCurrencyRupee />{dish.price}.00</p>
-                      </div>
-                    </div>
-
-
-                    <p className="menuItemContent">
-                      {expanded[dish.id] ? dish.description : `${dish.description.slice(0, 30)}...`}
-                      <span
-                        className="readMoreLess"
-                        onClick={() => toggleReadMore(dish.id)}
-                      >
-                        {expanded[dish.id] ? 'Read less' : 'Read more'}
-                      </span>
-                    </p>
-
-
-                    <div className="row d-flex mb-1 justify-content-start align-items-center">
-                      <div className="col-6">
-                        <p className="d-flex mb-0 justify-content-start align-items-center rating-container">
-                          <span className="menuItemRatings"><FaStar /></span>
-                          <span className="rating-value">{dish.rating}</span>
-                        </p>
-                      </div>
-
-                      <div className="col-6 d-flex justify-content-end align-items-center">
-
-                      <button className="addMenuItems d-flex justify-content-end align-items-center" onClick={() => handleAddToCart(dish)}>
-  <GrFormAdd /> ADD
-</button>
-
-
-
-{/* 
-                        <button className="addMenuItems d-flex justify-content-end align-items-center"  onClick={handleAddToCart}>
-                          <GrFormAdd /> ADD
-                        </button> */}
+                      <p className="menuItemContent">
+                        {expanded[dish.id] ? dish.description : `${dish.description.slice(0, 30)}...`}
+                        <span className="readMoreLess" onClick={() => toggleReadMore(dish.id)}>
+                          {expanded[dish.id] ? 'Read less' : 'Read more'}
+                        </span>
+                      </p>
+                      <div className="row d-flex mb-1 justify-content-start align-items-center">
+                        <div className="col-6">
+                          <p className="d-flex mb-0 justify-content-start align-items-center rating-container">
+                            <span className="menuItemRatings"><FaStar /></span>
+                            <span className="rating-value">{dish.rating}</span>
+                          </p>
+                        </div>
+                        <div className="col-6 d-flex justify-content-end align-items-center">
+                          {isAdded ? (
+                            <>
+                              <button className="quantity-btn" onClick={() => handleQuantityChange(dish.id, isAdded.quantity - 1)}>
+                                -
+                              </button>
+                              <span className="quantity-display mx-2">{isAdded.quantity}</span>
+                              <button className="quantity-btn" onClick={() => handleQuantityChange(dish.id, isAdded.quantity + 1)}>
+                                +
+                              </button>
+                              <button className="removeMenuItems ms-2" onClick={() => handleRemoveFromCart(dish.id)}>
+                                Remove
+                              </button>
+                            </>
+                          ) : (
+                            <button className="addMenuItems" onClick={() => handleAddToCart(dish)}>
+                              <GrFormAdd /> ADD
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
-            <p>No DISHES FOUND</p> // Show this when no dishes match
+            <p className="text-center">No dishes found. Please try a different search.</p>
           )}
-
-          {/* Pagination Controls */}
-          <div className="pagination justify-content-end mt-3">
-            <button
-              className="btn btn-outline-secondary"
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage(prev => prev - 1)}
-            >
-              Previous
-            </button>
-
-            {/* Page number buttons */}
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                className={`btn ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline-secondary'} mx-1`}
-                onClick={() => handlePageChange(i + 1)}
-              >
-                {i + 1}
-              </button>
-            ))}
-
-            <button
-              className="btn btn-outline-secondary"
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage(prev => prev + 1)}
-            >
-              Next
-            </button>
-          </div>
         </div>
       </section>
-<Cart/>
-
+      <div className="pagination">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index}
+            className={`page-button ${index + 1 === currentPage ? 'active' : ''}`}
+            onClick={() => setCurrentPage(index + 1)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
 
 export default HotDishes;
-
-
-

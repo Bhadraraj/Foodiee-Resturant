@@ -110,3 +110,29 @@ background: none;
   background-color: white;
   color: var(--primary-clr);
 }
+
+.discountIp{
+  border: 1px solid var(--primary-clr);
+  outline: none;
+  border-radius: 10px;
+  padding: 1px 5px;
+
+
+}
+
+.cartAmountSection input{
+width: 80px;
+/* border: none; */
+}
+/* .input-group .input-group-text{
+  font-size: 10px;
+} 
+.input-group{
+  font-size: 10px;
+}  */
+
+.goToCart a{
+  color: var(--secondary-clr);
+  
+
+}

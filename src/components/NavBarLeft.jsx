@@ -46,13 +46,13 @@ const NavBarLeft = () => {
                         <MdOutlineMenuBook />
                     </NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink
                         to='/notification'
                         className={({ isActive }) => isActive ? 'active-link' : ''}>
                         <MdNotificationsActive />
                     </NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink
                         to='/customerList'
@@ -60,13 +60,13 @@ const NavBarLeft = () => {
                         <FaClipboardList />
                     </NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink
                         to='/user'
                         className={({ isActive }) => isActive ? 'active-link' : ''}>
                         <FaUser />
                     </NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink
                         to='/billing'
@@ -74,13 +74,13 @@ const NavBarLeft = () => {
                         <RiBillFill />
                     </NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink
                         to='/setting'
                         className={({ isActive }) => isActive ? 'active-link' : ''}>
                         <IoIosSettings />
                     </NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink
                         to='/logout'
